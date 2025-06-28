@@ -22,14 +22,34 @@ public class GameManager : MonoBehaviour
     public Text scoreText;
     public Text multiplierText;
     // Start is called before the first frame update
+    public float elapsedMusicTime;//the amount of time that has passed since the start of the music
+    public float musicStartTime; // record of the time since the music start
+    public float[] transitionTimes; //when in the song to trigger the switch from attack to defend phase
+    /*note to self for late but since the first transition will be us going to the defend phase, in our array all transition times with an 
+    even index mean we need to transition to the defend phase and odd indexes are transition phase
+    even meaning when you divide by two the remainder is zero
+    this note to self is to help for when u decide if your gonna call the method to transition to defend phase or transition to the attack phase
+    im thinking we do a transitionToAttack and transitionToDefend method to control which buttons are activates and what direction the 
+    beat escroller moves the notes*/
+    public float currentTransitionTime; //the current time we are looking for a transition at
+    public int transitionIndex = -1; //start the index at -1 since it will be immediatiely incremented
+    public bool onAttackPhase; //helps us know if we are on attack or defend phase
+    public bool hasStarted; //checking if the player clicked a button to start the song(the beat scrolling)
+    
 
-
+    void Awake()
+    {
+        if (instance == null)
+            instance = this;
+        else
+            Destroy(gameObject);
+    }
     void Start()
     {
         resultsScreen.SetActive(false);
-        instance = this;
         scoreText.text = "Score: 0";
         currentMultiplier = 1;
+        beatScroller.TransitionToAttack();
         totalNotes = FindObjectsOfType<NoteObject>().Length; //tally 
     }
 
@@ -44,12 +64,16 @@ public class GameManager : MonoBehaviour
             if (Input.anyKeyDown)
             {
                 startPlaying = true;
-                beatScroller.hasStarted = true;
+                hasStarted = true;
+                onAttackPhase = true;
                 levelMusic.Play();
+                musicStartTime = Time.time; //get a record of the time so yk when it started
+
             }
         }
         else
         {
+            elapsedMusicTime = Time.time - musicStartTime; //this is to see the passed time sincce the music has started
             //if the music isnt playing and the results screen isnt on rn
             if (!levelMusic.isPlaying && !resultsScreen.activeInHierarchy)
             {
