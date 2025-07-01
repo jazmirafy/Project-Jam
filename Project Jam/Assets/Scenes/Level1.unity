@@ -2337,7 +2337,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c12028ceee993c04f9e57d7cc3d00dcc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  beatTempo: 126
+  beatTempo: 126.4
   attackNoteHolder: {fileID: 634971807}
   defendNoteHolder: {fileID: 1175765494}
   attackButtons: {fileID: 2125296780}
