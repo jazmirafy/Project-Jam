@@ -34,11 +34,11 @@ public class BeatScroller : MonoBehaviour
         else if (GameManager.instance.onAttackPhase) //during attack
         {
             //basically saying every frame move the note object down based on how fast the beat is and  scale it by time so it moves down consistently (so it moves per second instead of per frame)
-            transform.position -= new Vector3(0f, beatTempo * Time.deltaTime, 0f);
+            transform.position += new Vector3(0f, beatTempo * Time.deltaTime, 0f);
         }
         else if (!GameManager.instance.onAttackPhase) //during defend
         {
-            transform.position += new Vector3(0f, beatTempo * Time.deltaTime, 0f); //changes notes to go up at a consistent rate instead of down
+            transform.position -= new Vector3(0f, beatTempo * Time.deltaTime, 0f); //changes notes to go up at a consistent rate instead of down
         }
         if (GameManager.instance.transitionIndex < GameManager.instance.transitionTimes.Length && GameManager.instance.elapsedMusicTime >= GameManager.instance.currentTransitionTime) //if the variable we are using to track the elapsed time in the song = GameManager.instance.currentTransitionTime
         //i put >= to give the float a little leeway since it may not catch exactly on the time's decimal places
@@ -88,6 +88,9 @@ public class BeatScroller : MonoBehaviour
             GameManager.instance.currentTransitionTime = GameManager.instance.transitionTimes[GameManager.instance.transitionIndex];//set that next transition time as the current transition time
 
         }
+
+
+        
     }
     
 }

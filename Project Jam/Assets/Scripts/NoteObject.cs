@@ -9,6 +9,9 @@ public class NoteObject : MonoBehaviour
 
     public GameObject hitEffect, goodEffect, perfectEffect, missEffect;
     private bool hasBeenHit;
+    //note to future self but when u make the damage notes check first if the note type is damage not and if so
+    //if a damage note has been hit call hitDamageNote() (we are gonna make that its gonna be like missed note but deal more damage)
+    //same for if we hit a note that replenishes u(healing notes) check the note type first and call hitHealNote which is gonna be like note hit but more replenishing
     //basically asking have i entered our button area and if i have is the correct button being pressed
     //basically checking if the note entered the button area
     //if it has we are basically saying okay you can press the button now

@@ -8,12 +8,14 @@ public class GameManager : MonoBehaviour
     public AudioSource levelMusic;
     public bool startPlaying;
     public BeatScroller beatScroller;
+    public HealthManager healthManager;
     public static GameManager instance; //so i dont need to drag this script to each and every note thats hella work
     public int currentScore;
     public int scorePerNote;
     public int scorePerGoodNote = 125;
     public int scorePerPerfectNote = 150;
     public float totalNotes, normalHits, goodHits, perfectHits, missedHits;
+    public float healAmount, damageAmount;
     public GameObject resultsScreen;
     public Text percentHitText, normalText, goodText, perfectText, missedText, rankText, finalScoreText;
     public int currentMultiplier; 
@@ -112,6 +114,9 @@ public class GameManager : MonoBehaviour
     //basically this tracks your streak, and once u hit a certain amount in a row, the multiplier levels up
     public void NoteHit()
     {
+        healthManager.RobotTakeDamage(damageAmount);
+        healthManager.PlayerHeal(healAmount);
+        
         Debug.Log("Hit on time yuhhhh");
         if (currentMultiplier - 1 < multiplierThresholds.Length) //making sure we stay in bounds of the array indices/dont go over
         {
@@ -121,10 +126,11 @@ public class GameManager : MonoBehaviour
                 multiplierTracker = 0;
                 currentMultiplier++;
             }
-           // currentScore += scorePerNote * currentMultiplier;
+            // currentScore += scorePerNote * currentMultiplier;
             scoreText.text = "Score: " + currentScore;
         }
         multiplierText.text = "Multiplier: x" + currentMultiplier;
+        //give player more health and take robot health if they hit the good note
     }
     public void NormalHit()
     {
@@ -153,5 +159,7 @@ public class GameManager : MonoBehaviour
         multiplierText.text = "Multiplier: x" + currentMultiplier;
         Debug.Log("Multiplier has reset");
         missedHits++;
+        healthManager.PlayerTakeDamage(damageAmount);
+        healthManager.RobotHeal(healAmount);
     }   
 }
