@@ -5147,7 +5147,7 @@ GameObject:
   - component: {fileID: 2135968424}
   - component: {fileID: 2135968423}
   m_Layer: 0
-  m_Name: Uncopyrighted Whitebox Music(short)
+  m_Name: Music Manager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5163,7 +5163,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: e3903f052f6e1c84385cd598b244e788, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 5bcc0ef2c41cf42aa9e9cfcee9ff05ec, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
