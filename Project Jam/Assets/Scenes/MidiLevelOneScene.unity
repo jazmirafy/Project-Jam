@@ -3512,7 +3512,7 @@ MonoBehaviour:
   - {fileID: 959676214}
   - {fileID: 1181449344}
   - {fileID: 433476378}
-  marginOfError: 0.4
+  marginOfError: 0.2
 --- !u!4 &1984935882
 Transform:
   m_ObjectHideFlags: 0

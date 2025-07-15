@@ -127,7 +127,7 @@ public class GameManager : MonoBehaviour
                 multiplierTracker = 0;
                 currentMultiplier++;
             }
-            // currentScore += scorePerNote * currentMultiplier;
+            // currentScore += scorePerNote * currentMultiplier; 
             scoreText.text = "Score: " + currentScore;
         }
         multiplierText.text = "Multiplier: x" + currentMultiplier;

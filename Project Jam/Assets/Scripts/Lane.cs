@@ -68,6 +68,7 @@ public class Lane : MonoBehaviour
                     print($"Hit on {inputIndex} note");
                     Destroy(notes[inputIndex].gameObject);
                     inputIndex++;
+
                 }
                 //if you hit the note within 1/2 of the given leeway interval, you have a good hit
                 else if (Math.Abs(audioTime - timeStamp) < marginOfError / 2)
@@ -75,20 +76,26 @@ public class Lane : MonoBehaviour
                     Debug.Log("Good");
                     GameManager.instance.GoodHit();
                     Instantiate(goodEffect, button.transform.position, goodEffect.transform.rotation);
+                    Destroy(notes[inputIndex].gameObject);
                     inputIndex++;
+                    
                 }
                 //if you hit the note within the leeway interval but not within 1/4th or 1/2 of it, you just have a normal hit
-                else
+                else if(Math.Abs(audioTime - timeStamp) < marginOfError)
                 {
                     Debug.Log("Normal");
                     GameManager.instance.NormalHit();
                     Instantiate(hitEffect, button.transform.position, hitEffect.transform.rotation);
                     print($"Hit inaccurate on {inputIndex} note with {Math.Abs(audioTime - timeStamp)} delay");
+                    Destroy(notes[inputIndex].gameObject);
                     inputIndex++;
+                    
                 }
             }
-            //if you hit the note outside of the leeway interval, you have missed the note (or it you did hit the note/press the button period)
-            if (timeStamp + marginOfError <= audioTime)
+            //if you hit the note outside of the leeway interval, you have missed the note (or if you didnt hit the note/press the button period)
+            //basically if the current time that the audio is at right now is greaterthan or equal to the time the note way supposed to be hit 
+            //plus the margin+ of error (leeway time) the user took too long and you have missed the note
+            if (audioTime >= timeStamp + marginOfError)
             {
                 GameManager.instance.NoteMissed();
                 Instantiate(missEffect, button.transform.position, missEffect.transform.rotation);
