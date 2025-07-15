@@ -20,6 +20,9 @@ public class SongManager : MonoBehaviour
     public double marginOfError; // in seconds
 
     public float noteDespawnY
+    // calculates the despawn Y position by mirroring the spawn-tap distance on the other side of the tap point
+    // so this works for both up and down scrolling directions because it uses actual spawn and tap Y positions (so it adjusts for both the attack and defend phase)
+
     {
         get
         {

@@ -1,6 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Melanchall.DryWetMidi.Core;
+using Melanchall.DryWetMidi.Interaction;
+using System.IO;
+
 
 public class BeatScroller : MonoBehaviour
 {
@@ -10,7 +14,7 @@ public class BeatScroller : MonoBehaviour
     
     
     public GameObject attackNoteHolder, defendNoteHolder, attackButtons, defendButtons;
-    void Start()
+    /*void Start()
     {
         beatTempo = beatTempo / 60f; //how fast the beat scrolls should move per second
         GameManager.instance.currentTransitionTime = GameManager.instance.transitionTimes[GameManager.instance.transitionIndex];
@@ -25,12 +29,12 @@ public class BeatScroller : MonoBehaviour
             /*if (Input.anyKeyDown)
             {
                 GameManager.instance.currentTransitionTime) = true;
-            }*/
+            }
         }
         /*if the song has started, start moving the notes down
         keep x and z zero bc we only want to affect the vertical movement(y)
         note to self: when you make the defend phase where beats have to move upward instead of
-        downward, take this same line but put += instead of -= */
+        downward, take this same line but put += instead of -= 
         else if (GameManager.instance.onAttackPhase) //during attack
         {
             //basically saying every frame move the note object down based on how fast the beat is and  scale it by time so it moves down consistently (so it moves per second instead of per frame)
@@ -91,6 +95,6 @@ public class BeatScroller : MonoBehaviour
 
 
         
-    }
+    }*/
     
 }

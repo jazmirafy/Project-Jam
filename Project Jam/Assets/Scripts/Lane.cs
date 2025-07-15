@@ -9,8 +9,10 @@ public class Lane : MonoBehaviour
     public Melanchall.DryWetMidi.MusicTheory.NoteName noteRestriction;
     public KeyCode input;
     public GameObject notePrefab;
+    public GameObject button;
     List<Note> notes = new List<Note>();
-    public List<double> timeStamps = new List<double>();
+    public List<double> timeStamps = new List<double>(); //the scheduled time the note is supposed to be hit/expected hit time of a note
+    public GameObject hitEffect, goodEffect, perfectEffect, missEffect;
 
     int spawnIndex = 0;
     int inputIndex = 0;
@@ -47,39 +49,88 @@ public class Lane : MonoBehaviour
 
         if (inputIndex < timeStamps.Count)
         {
-            double timeStamp = timeStamps[inputIndex];
-            double marginOfError = SongManager.Instance.marginOfError;
-            double audioTime = SongManager.GetAudioSourceTime() - (SongManager.Instance.inputDelayInMilliseconds / 1000.0);
+            double timeStamp = timeStamps[inputIndex]; //the time the note is supposed to be hit
+            double marginOfError = SongManager.Instance.marginOfError; //basically like the interval of time where the note still counts as a hit/how much leeway the hit has
+            double audioTime = SongManager.GetAudioSourceTime() - (SongManager.Instance.inputDelayInMilliseconds / 1000.0); //the current time it is in the song
 
             if (Input.GetKeyDown(input))
             {
-                if (Math.Abs(audioTime - timeStamp) < marginOfError)
+                //so we take the differences between the audio time and the time stamp (the current time it is in the song vs when the note is supposed to be hit)
+                //this determines the difference in accuracy of the hit
+                //if the player accuracy is outside of the margin of error, the note is missed
+                //the conditions are as follows;
+                //if you hit the note within 1/4th of the given leeway interval, you have a perfect hit
+                if (Math.Abs(audioTime - timeStamp) < marginOfError / 4)
                 {
-                    Hit();
+                    Debug.Log("Perfect");
+                    GameManager.instance.PerfectHit();
+                    Instantiate(perfectEffect, button.transform.position, perfectEffect.transform.rotation);
                     print($"Hit on {inputIndex} note");
                     Destroy(notes[inputIndex].gameObject);
                     inputIndex++;
+
                 }
-                else
+                //if you hit the note within 1/2 of the given leeway interval, you have a good hit
+                else if (Math.Abs(audioTime - timeStamp) < marginOfError / 2)
                 {
+                    Debug.Log("Good");
+                    GameManager.instance.GoodHit();
+                    Instantiate(goodEffect, button.transform.position, goodEffect.transform.rotation);
+                    Destroy(notes[inputIndex].gameObject);
+                    inputIndex++;
+                    
+                }
+                //if you hit the note within the leeway interval but not within 1/4th or 1/2 of it, you just have a normal hit
+                else if(Math.Abs(audioTime - timeStamp) < marginOfError)
+                {
+                    Debug.Log("Normal");
+                    GameManager.instance.NormalHit();
+                    Instantiate(hitEffect, button.transform.position, hitEffect.transform.rotation);
                     print($"Hit inaccurate on {inputIndex} note with {Math.Abs(audioTime - timeStamp)} delay");
+                    Destroy(notes[inputIndex].gameObject);
+                    inputIndex++;
+                    
                 }
             }
-            if (timeStamp + marginOfError <= audioTime)
+            //if you hit the note outside of the leeway interval, you have missed the note (or if you didnt hit the note/press the button period)
+            //basically if the current time that the audio is at right now is greaterthan or equal to the time the note way supposed to be hit 
+            //plus the margin+ of error (leeway time) the user took too long and you have missed the note
+            if (audioTime >= timeStamp + marginOfError)
             {
-                Miss();
+                GameManager.instance.NoteMissed();
+                Instantiate(missEffect, button.transform.position, missEffect.transform.rotation);
                 print($"Missed {inputIndex} note");
                 inputIndex++;
             }
+            /*if (Mathf.Abs(transform.position.y) > 0.25)
+            {
+                Debug.Log("Normal");
+                GameManager.instance.NormalHit();
+                Instantiate(hitEffect, transform.position, hitEffect.transform.rotation);
+            }
+            else if (Mathf.Abs(transform.position.y) > 0.05f)
+            {
+                Debug.Log("Good");
+                GameManager.instance.GoodHit();
+                Instantiate(goodEffect, transform.position, goodEffect.transform.rotation);
+            }
+            else
+            {
+                Debug.Log("Perfect");
+                GameManager.instance.PerfectHit();
+                Instantiate(perfectEffect, transform.position, perfectEffect.transform.rotation);
+            }*/
+
+            
         }       
     
     }
-    private void Hit()
+    /*private void Hit()
     {
         ScoreManager.Hit();
     }
     private void Miss()
     {
         ScoreManager.Miss();
-    }
+    }*/
 }
