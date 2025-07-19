@@ -36,7 +36,9 @@ public class GameManager : MonoBehaviour
     public float currentTransitionTime; //the current time we are looking for a transition at
     public int transitionIndex = -1; //start the index at -1 since it will be immediatiely incremented
     public bool onAttackPhase; //helps us know if we are on attack or defend phase
-   // public bool hasStarted; //checking if the player clicked a button to start the song(the beat scrolling)
+                               // public bool hasStarted; //checking if the player clicked a button to start the song(the beat scrolling)
+    public GameObject tapButtons;
+    //public float tapButtonY = tapButtons.transform.position.y;
     
     
 

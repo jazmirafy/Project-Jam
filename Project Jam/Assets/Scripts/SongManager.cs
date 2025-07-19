@@ -14,8 +14,8 @@ public class SongManager : MonoBehaviour
     public int inputDelayInMilliseconds; // in case there's a keyboard issue and we have input delay
     public string fileLocation; // place in StreamingAssets where the MIDI file is kept
     public float noteTime; // how much time the note will be on screen
-    public float noteSpawnY; // where the notes spawn
-    public float noteTapY; // where the notes need to be tapped
+    public float noteSpawnY, defendNoteSpawnY, attackNoteSpawnY; // where the notes spawn
+    public float noteTapY, defendNoteTapY, attackNoteTapY; // where the notes need to be tapped
     public Lane[] lanes; // your custom class for input lanes
     public double marginOfError; // in seconds
 
@@ -34,6 +34,7 @@ public class SongManager : MonoBehaviour
 
     void Start()
     {
+
         Instance = this;
 
         if (Application.streamingAssetsPath.StartsWith("http://") || Application.streamingAssetsPath.StartsWith("https://"))
@@ -44,6 +45,7 @@ public class SongManager : MonoBehaviour
         {
             ReadFromFile();
         }
+      
     }
 
     private IEnumerator ReadFromWebsite()

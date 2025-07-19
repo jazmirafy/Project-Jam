@@ -20,7 +20,7 @@ public class Lane : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
     public void SetTimeStamps(Melanchall.DryWetMidi.Interaction.Note[] array)
     {
@@ -36,6 +36,7 @@ public class Lane : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        
         if (spawnIndex < timeStamps.Count)
         {
             if (SongManager.GetAudioSourceTime() >= timeStamps[spawnIndex] - SongManager.Instance.noteTime)
@@ -47,11 +48,26 @@ public class Lane : MonoBehaviour
             }
         }
 
+        double audioTime = SongManager.GetAudioSourceTime() - (SongManager.Instance.inputDelayInMilliseconds / 1000.0); //the current time it is in the song
+        if (GameManager.instance.transitionIndex < GameManager.instance.transitionTimes.Length && audioTime >= GameManager.instance.currentTransitionTime) //if the variable we are using to track the elapsed time in the song = GameManager.instance.currentTransitionTime
+        //i put >= to give the float a little leeway since it may not catch exactly on the time's decimal places
+        //also check the transition index and the transition time array length so stuff doesnt go out of bound
+        {
+            if (GameManager.instance.transitionIndex % 2 == 0) //if the transition index is even transition to defend since we start the song attacking, defend transitions will always be on an even transition index
+            {
+                TransitionToDefend();
+            }
+            else
+            {
+                TransitionToAttack();
+            }
+        }
+
         if (inputIndex < timeStamps.Count)
         {
-            double timeStamp = timeStamps[inputIndex]; //the time the note is supposed to be hit
-            double marginOfError = SongManager.Instance.marginOfError; //basically like the interval of time where the note still counts as a hit/how much leeway the hit has
-            double audioTime = SongManager.GetAudioSourceTime() - (SongManager.Instance.inputDelayInMilliseconds / 1000.0); //the current time it is in the song
+
+                    double timeStamp = timeStamps[inputIndex]; //the time the note is supposed to be hit
+        double marginOfError = SongManager.Instance.marginOfError; //basically like the interval of time where the note still counts as a hit/how much leeway the hit has
 
             if (Input.GetKeyDown(input))
             {
@@ -78,10 +94,10 @@ public class Lane : MonoBehaviour
                     Instantiate(goodEffect, button.transform.position, goodEffect.transform.rotation);
                     Destroy(notes[inputIndex].gameObject);
                     inputIndex++;
-                    
+
                 }
                 //if you hit the note within the leeway interval but not within 1/4th or 1/2 of it, you just have a normal hit
-                else if(Math.Abs(audioTime - timeStamp) < marginOfError)
+                else if (Math.Abs(audioTime - timeStamp) < marginOfError)
                 {
                     Debug.Log("Normal");
                     GameManager.instance.NormalHit();
@@ -89,7 +105,7 @@ public class Lane : MonoBehaviour
                     print($"Hit inaccurate on {inputIndex} note with {Math.Abs(audioTime - timeStamp)} delay");
                     Destroy(notes[inputIndex].gameObject);
                     inputIndex++;
-                    
+
                 }
             }
             //if you hit the note outside of the leeway interval, you have missed the note (or if you didnt hit the note/press the button period)
@@ -102,28 +118,12 @@ public class Lane : MonoBehaviour
                 print($"Missed {inputIndex} note");
                 inputIndex++;
             }
-            /*if (Mathf.Abs(transform.position.y) > 0.25)
-            {
-                Debug.Log("Normal");
-                GameManager.instance.NormalHit();
-                Instantiate(hitEffect, transform.position, hitEffect.transform.rotation);
-            }
-            else if (Mathf.Abs(transform.position.y) > 0.05f)
-            {
-                Debug.Log("Good");
-                GameManager.instance.GoodHit();
-                Instantiate(goodEffect, transform.position, goodEffect.transform.rotation);
-            }
-            else
-            {
-                Debug.Log("Perfect");
-                GameManager.instance.PerfectHit();
-                Instantiate(perfectEffect, transform.position, perfectEffect.transform.rotation);
-            }*/
 
-            
-        }       
-    
+
+
+
+        }
+
     }
     /*private void Hit()
     {
@@ -133,4 +133,42 @@ public class Lane : MonoBehaviour
     {
         ScoreManager.Miss();
     }*/
+        public void TransitionToAttack()
+    {
+        ///switch note tap and note spawn values
+        SongManager.Instance.noteSpawnY = SongManager.Instance.attackNoteSpawnY;
+        SongManager.Instance.noteTapY = SongManager.Instance.attackNoteTapY;
+        
+        /// change the position to the buttons to the note tap value
+       GameManager.instance.tapButtons.transform.position = new Vector3(GameManager.instance.tapButtons.transform.position.x, SongManager.Instance.noteTapY, GameManager.instance.tapButtons.transform.position.z);
+       // GameManager.instance.onAttackPhase = true; // this will trigger the change in note drirections
+        GameManager.instance.transitionIndex += 1;//go to the next transition time
+        //note to future self: put a check before u do this so transition index doesnt go out of bounds
+        if (GameManager.instance.transitionIndex < GameManager.instance.transitionTimes.Length)
+        {
+            GameManager.instance.currentTransitionTime = GameManager.instance.transitionTimes[GameManager.instance.transitionIndex];//set that next transition time as the current transition time
+
+        }
+        
+    }
+    public void TransitionToDefend()
+    {
+        ///switch note tap and note spawn values
+        SongManager.Instance.noteSpawnY = SongManager.Instance.defendNoteSpawnY;
+        SongManager.Instance.noteTapY = SongManager.Instance.defendNoteTapY;
+        
+        /// change the y position of the buttons to the new note tap value 
+        GameManager.instance.tapButtons.transform.position = new Vector3(GameManager.instance.tapButtons.transform.position.x, SongManager.Instance.noteTapY, GameManager.instance.tapButtons.transform.position.z);
+        //GameManager.instance.onAttackPhase = false; //this will trigger the change in note direction
+        GameManager.instance.transitionIndex += 1; //go to the next transition time
+        //this makes sure we dont go out of bounds
+        if (GameManager.instance.transitionIndex < GameManager.instance.transitionTimes.Length)
+        {
+            GameManager.instance.currentTransitionTime = GameManager.instance.transitionTimes[GameManager.instance.transitionIndex];//set that next transition time as the current transition time
+
+        }
+
+
+        
+    }
 }
