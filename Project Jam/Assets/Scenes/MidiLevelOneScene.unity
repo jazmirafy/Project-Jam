@@ -1155,11 +1155,12 @@ MonoBehaviour:
   scoreText: {fileID: 934499573}
   multiplierText: {fileID: 178196414}
   transitionTimes:
-  - 9
-  - 16.5
+  - 10
+  - 25
   currentTransitionTime: 0
   transitionIndex: -1
   onAttackPhase: 0
+  tapButtons: {fileID: 1662845172}
 --- !u!4 &875004282
 Transform:
   m_ObjectHideFlags: 0
@@ -3506,7 +3507,11 @@ MonoBehaviour:
   fileLocation: longwhitebox.mid
   noteTime: 2
   noteSpawnY: 7
+  defendNoteSpawnY: -7
+  attackNoteSpawnY: 7
   noteTapY: -3
+  defendNoteTapY: 3
+  attackNoteTapY: -3
   lanes:
   - {fileID: 1086286814}
   - {fileID: 959676214}
