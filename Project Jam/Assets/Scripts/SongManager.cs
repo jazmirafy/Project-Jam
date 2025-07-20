@@ -5,6 +5,9 @@ using Melanchall.DryWetMidi.Core;
 using Melanchall.DryWetMidi.Interaction;
 using System.IO;
 using UnityEngine.Networking;
+using Melanchall.DryWetMidi.MusicTheory;
+using UnityEngine.Events;
+using System.Runtime.CompilerServices;
 
 public class SongManager : MonoBehaviour
 {
@@ -14,8 +17,8 @@ public class SongManager : MonoBehaviour
     public int inputDelayInMilliseconds; // in case there's a keyboard issue and we have input delay
     public string fileLocation; // place in StreamingAssets where the MIDI file is kept
     public float noteTime; // how much time the note will be on screen
-    public float noteSpawnY; // where the notes spawn
-    public float noteTapY; // where the notes need to be tapped
+    public float noteSpawnY, defendNoteSpawnY, attackNoteSpawnY; // where the notes spawn
+    public float noteTapY, defendNoteTapY, attackNoteTapY; // where the notes need to be tapped
     public Lane[] lanes; // your custom class for input lanes
     public double marginOfError; // in seconds
 
@@ -29,11 +32,14 @@ public class SongManager : MonoBehaviour
             return noteTapY - (noteSpawnY - noteTapY);
         }
     }
-
     public static MidiFile midiFile; // where the midi file is loaded into memory
+    public float bpm;
+    public Intervals[] intervals;
+
 
     void Start()
     {
+
         Instance = this;
 
         if (Application.streamingAssetsPath.StartsWith("http://") || Application.streamingAssetsPath.StartsWith("https://"))
@@ -44,7 +50,18 @@ public class SongManager : MonoBehaviour
         {
             ReadFromFile();
         }
+
     }
+    void Update()
+    {
+        foreach (Intervals interval in intervals)
+        {
+            //time that we are elapsed divided by intervals
+            float sampledTime = audioSource.timeSamples / (audioSource.clip.frequency * interval.GetIntervalLength(bpm));
+            interval.CheckForNewInterval(sampledTime);
+        }
+    }
+
 
     private IEnumerator ReadFromWebsite()
     {
@@ -98,8 +115,32 @@ public class SongManager : MonoBehaviour
         return (double)Instance.audioSource.timeSamples / Instance.audioSource.clip.frequency;
     }
 
-    void Update()
-    {
-        // usually not needed unless you’re syncing other runtime logic
-    }
+
 }
+[System.Serializable]
+public class Intervals
+{
+        public float steps;
+        public UnityEvent trigger;
+
+
+        private int lastInterval;
+
+        //length of our current beat we are trying to track
+        public float GetIntervalLength(float bpm)
+        {
+            return 60f / (bpm * steps);
+        }
+        //check if we crossed into a new beat or not 
+        public void CheckForNewInterval(float interval)
+        {
+            //round down to the nearest whole number and if we have a change in whole number we know we have another beat
+            if (Mathf.FloorToInt(interval) != lastInterval)
+            {
+                lastInterval = Mathf.FloorToInt(interval);
+                trigger.Invoke();
+            }
+        }
+        
+}
+  
