@@ -8,6 +8,7 @@ public class Lane : MonoBehaviour
 {
     public Melanchall.DryWetMidi.MusicTheory.NoteName noteRestriction;
     public KeyCode input;
+    public playerController playerController;
     public GameObject notePrefab;
     public GameObject button;
     List<Note> notes = new List<Note>();
@@ -66,8 +67,8 @@ public class Lane : MonoBehaviour
         if (inputIndex < timeStamps.Count)
         {
 
-                    double timeStamp = timeStamps[inputIndex]; //the time the note is supposed to be hit
-        double marginOfError = SongManager.Instance.marginOfError; //basically like the interval of time where the note still counts as a hit/how much leeway the hit has
+            double timeStamp = timeStamps[inputIndex]; //the time the note is supposed to be hit
+            double marginOfError = SongManager.Instance.marginOfError; //basically like the interval of time where the note still counts as a hit/how much leeway the hit has
 
             if (Input.GetKeyDown(input))
             {
@@ -115,6 +116,7 @@ public class Lane : MonoBehaviour
             {
                 GameManager.instance.NoteMissed();
                 Instantiate(missEffect, button.transform.position, missEffect.transform.rotation);
+                playerController.missAnimation();
                 print($"Missed {inputIndex} note");
                 inputIndex++;
             }
@@ -125,14 +127,6 @@ public class Lane : MonoBehaviour
         }
 
     }
-    /*private void Hit()
-    {
-        ScoreManager.Hit();
-    }
-    private void Miss()
-    {
-        ScoreManager.Miss();
-    }*/
         public void TransitionToAttack()
     {
         ///switch note tap and note spawn values
@@ -143,6 +137,7 @@ public class Lane : MonoBehaviour
        GameManager.instance.tapButtons.transform.position = new Vector3(GameManager.instance.tapButtons.transform.position.x, SongManager.Instance.noteTapY, GameManager.instance.tapButtons.transform.position.z);
        // GameManager.instance.onAttackPhase = true; // this will trigger the change in note drirections
         GameManager.instance.transitionIndex += 1;//go to the next transition time
+        Debug.Log("we incremente the transition index by caling transition to attack" + GameManager.instance);
         //note to future self: put a check before u do this so transition index doesnt go out of bounds
         if (GameManager.instance.transitionIndex < GameManager.instance.transitionTimes.Length)
         {

@@ -34,7 +34,7 @@ public class GameManager : MonoBehaviour
     im thinking we do a transitionToAttack and transitionToDefend method to control which buttons are activates and what direction the 
     beat escroller moves the notes*/
     public float currentTransitionTime; //the current time we are looking for a transition at
-    public int transitionIndex = -1; //start the index at -1 since it will be immediatiely incremented
+    public int transitionIndex; //the transition index we are currently at
     public bool onAttackPhase; //helps us know if we are on attack or defend phase
                                // public bool hasStarted; //checking if the player clicked a button to start the song(the beat scrolling)
     public GameObject tapButtons;
@@ -54,31 +54,14 @@ public class GameManager : MonoBehaviour
         resultsScreen.SetActive(false);
         scoreText.text = "Score: 0";
         currentMultiplier = 1;
-        //beatScroller.TransitionToAttack();
-        //totalNotes = FindObjectsOfType<NoteObject>().Length; //tally 
+        currentTransitionTime = transitionTimes[0]; //set the current transition time to the first transition time in the list at start
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        /*if the music hasnt started playing and the player clicks any button
-        start the music and start the beat scroller and turn the bool variables tracking if music and beat
-        scroller have started to tru*/
-            /*if (Input.anyKeyDown)
-            {
-                startPlaying = true;
-                hasStarted = true;
-                onAttackPhase = true;
-                levelMusic.Play();
-                musicStartTime = Time.time; //get a record of the time so yk when it started
-
-            }*/
-    
-    
         
-        //note to self later u need to add this back to show the results screen and set a bool that goes on and off when the music is on vs offS
-            //elapsedMusicTime = Time.time - musicStartTime; //this is to see the passed time sincce the music has started
-            //if the music isnt playing and the results screen isnt on rn
             if (!levelMusic.isPlaying && !resultsScreen.activeInHierarchy)
             {
                 resultsScreen.SetActive(true);
@@ -87,7 +70,7 @@ public class GameManager : MonoBehaviour
                 perfectText.text = perfectHits.ToString();
                 missedText.text = missedHits.ToString();
                 float totalHit = normalHits + goodHits + perfectHits;
-                //totalNotes = amount of all notes
+                totalNotes = normalHits + goodHits + perfectHits + missedHits;
                 float percentHit = totalHit / totalNotes * 100;
                 percentHitText.text = percentHit.ToString("F1") + "%"; //f1 is there to only show one decimal place
                 string rankValue = "F";
