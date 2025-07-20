@@ -13,27 +13,27 @@ public class PulseToTheBeat : MonoBehaviour
 
     private void Start()
     {
-        // Determine if this is a UI element
+        // determine if this is a UI element
         rectTransform = GetComponent<RectTransform>();
         isUI = rectTransform != null;
 
-        // Set starting scale based on UI or World
+        // det starting scale based on UI or World
         startSize = isUI ? rectTransform.localScale : transform.localScale;
 
-        // Optional test pulse for debugging
+        // optional test pulse for debugging
         if (useTestBeat)
             StartCoroutine(TestBeat());
     }
 
     private void Update()
     {
-        // Get current scale
+        // get da current scale
         Vector3 currentScale = isUI ? rectTransform.localScale : transform.localScale;
 
-        // Lerp toward original size
+        // lerp toward da original size
         Vector3 newScale = Vector3.Lerp(currentScale, startSize, Time.deltaTime * returnSpeed);
 
-        // Apply it
+        
         if (isUI)
             rectTransform.localScale = newScale;
         else
