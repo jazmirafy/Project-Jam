@@ -7,7 +7,7 @@ public class GameManager : MonoBehaviour
 {
     public AudioSource levelMusic;
     public bool startPlaying;
-    public BeatScroller beatScroller;
+    //public BeatScroller beatScroller;
     public HealthManager healthManager;
     public static GameManager instance; //so i dont need to drag this script to each and every note thats hella work
     public int currentScore;
@@ -24,8 +24,8 @@ public class GameManager : MonoBehaviour
     public Text scoreText;
     public Text multiplierText;
     // Start is called before the first frame update
-    public float elapsedMusicTime;//the amount of time that has passed since the start of the music
-    public float musicStartTime; // record of the time since the music start
+   // public float elapsedMusicTime;//the amount of time that has passed since the start of the music
+   // public float musicStartTime; // record of the time since the music start
     public float[] transitionTimes; //when in the song to trigger the switch from attack to defend phase
     /*note to self for late but since the first transition will be us going to the defend phase, in our array all transition times with an 
     even index mean we need to transition to the defend phase and odd indexes are transition phase
@@ -34,9 +34,12 @@ public class GameManager : MonoBehaviour
     im thinking we do a transitionToAttack and transitionToDefend method to control which buttons are activates and what direction the 
     beat escroller moves the notes*/
     public float currentTransitionTime; //the current time we are looking for a transition at
-    public int transitionIndex = -1; //start the index at -1 since it will be immediatiely incremented
+    public int transitionIndex; //the transition index we are currently at
     public bool onAttackPhase; //helps us know if we are on attack or defend phase
-    public bool hasStarted; //checking if the player clicked a button to start the song(the beat scrolling)
+                               // public bool hasStarted; //checking if the player clicked a button to start the song(the beat scrolling)
+    public GameObject tapButtons;
+    //public float tapButtonY = tapButtons.transform.position.y;
+    
     
 
     void Awake()
@@ -51,32 +54,14 @@ public class GameManager : MonoBehaviour
         resultsScreen.SetActive(false);
         scoreText.text = "Score: 0";
         currentMultiplier = 1;
-        beatScroller.TransitionToAttack();
-        totalNotes = FindObjectsOfType<NoteObject>().Length; //tally 
+        currentTransitionTime = transitionTimes[0]; //set the current transition time to the first transition time in the list at start
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        /*if the music hasnt started playing and the player clicks any button
-        start the music and start the beat scroller and turn the bool variables tracking if music and beat
-        scroller have started to tru*/
-        if (!startPlaying)
-        {
-            if (Input.anyKeyDown)
-            {
-                startPlaying = true;
-                hasStarted = true;
-                onAttackPhase = true;
-                levelMusic.Play();
-                musicStartTime = Time.time; //get a record of the time so yk when it started
-
-            }
-        }
-        else
-        {
-            elapsedMusicTime = Time.time - musicStartTime; //this is to see the passed time sincce the music has started
-            //if the music isnt playing and the results screen isnt on rn
+        
             if (!levelMusic.isPlaying && !resultsScreen.activeInHierarchy)
             {
                 resultsScreen.SetActive(true);
@@ -85,7 +70,8 @@ public class GameManager : MonoBehaviour
                 perfectText.text = perfectHits.ToString();
                 missedText.text = missedHits.ToString();
                 float totalHit = normalHits + goodHits + perfectHits;
-                float percentHit = (totalHit / totalNotes) * 100;
+                totalNotes = normalHits + goodHits + perfectHits + missedHits;
+                float percentHit = totalHit / totalNotes * 100;
                 percentHitText.text = percentHit.ToString("F1") + "%"; //f1 is there to only show one decimal place
                 string rankValue = "F";
                 if (percentHit > 90)
@@ -107,7 +93,7 @@ public class GameManager : MonoBehaviour
                 rankText.text = rankValue;
                 finalScoreText.text = currentScore.ToString();
             }
-        }
+        
     }
     //when  u hit a note up the score. score is determined by score per note and the score multiplier if the player has a streak of getting the hits correct
     //we want to reward players for getting hits in a row so we apply a multiplier to their score as a reward for their streak
@@ -126,7 +112,7 @@ public class GameManager : MonoBehaviour
                 multiplierTracker = 0;
                 currentMultiplier++;
             }
-            // currentScore += scorePerNote * currentMultiplier;
+            // currentScore += scorePerNote * currentMultiplier; 
             scoreText.text = "Score: " + currentScore;
         }
         multiplierText.text = "Multiplier: x" + currentMultiplier;
