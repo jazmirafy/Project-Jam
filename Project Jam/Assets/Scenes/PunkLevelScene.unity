@@ -3828,7 +3828,7 @@ MonoBehaviour:
   audioSource: {fileID: 1809491529}
   songDelayInSeconds: 0
   inputDelayInMilliseconds: 0
-  fileLocation: longwhitebox.mid
+  fileLocation: PunkDraft2.mid
   noteTime: 2
   noteSpawnY: 7
   defendNoteSpawnY: -7
