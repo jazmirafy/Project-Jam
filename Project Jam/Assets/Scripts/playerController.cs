@@ -15,30 +15,31 @@ public class playerController : MonoBehaviour
 
     void Update()
     {
-        // ---- LEFT ----
+        //left
         if (Input.GetKeyDown(KeyCode.LeftArrow))
             animator.SetTrigger("leftHeld");
     
      
 
-        // ---- RIGHT ----
+        // right
         if (Input.GetKeyDown(KeyCode.RightArrow))
             animator.SetTrigger("rightHeld");
 
 
-        // ---- UP ----
+        //up
         if (Input.GetKeyDown(KeyCode.UpArrow))
             animator.SetTrigger("upHeld");
     
 
-        // ---- DOWN ----
+        // down
         if (Input.GetKeyDown(KeyCode.DownArrow))
             animator.SetTrigger("downHeld");
 
-        // miss
+        
 
         
     }
+    //miss trigger
     public void missAnimation()
     {
         animator.SetTrigger("miss");
