@@ -9,6 +9,7 @@ public class Lane : MonoBehaviour
     public Melanchall.DryWetMidi.MusicTheory.NoteName noteRestriction;
     public KeyCode input;
     public playerController playerController;
+    public RobotController robotController;
     public GameObject notePrefab;
     public GameObject button;
     List<Note> notes = new List<Note>();
@@ -17,11 +18,14 @@ public class Lane : MonoBehaviour
 
     int spawnIndex = 0;
     int inputIndex = 0;
+    int robotAnimIndex = 0;
+    public static bool onAttackPhase;
 
     // Start is called before the first frame update
     void Start()
     {
-
+        //the attack phase goes first in the song
+        onAttackPhase = true;
     }
     public void SetTimeStamps(Melanchall.DryWetMidi.Interaction.Note[] array)
     {
@@ -48,8 +52,26 @@ public class Lane : MonoBehaviour
                 spawnIndex++;
             }
         }
+        
 
         double audioTime = SongManager.GetAudioSourceTime() - (SongManager.Instance.inputDelayInMilliseconds / 1000.0); //the current time it is in the song
+        if (robotAnimIndex < timeStamps.Count)
+        {
+            double robotTimestamp = timeStamps[robotAnimIndex];
+        
+
+            // if the audio time has just passed this timestamp
+            if (audioTime >= robotTimestamp)
+            {
+                //only animate the robot directional poses if we are on the defend phase
+                if (!onAttackPhase)
+                {
+                    robotController.TriggerNoteAnimation(noteRestriction);
+                }
+
+                robotAnimIndex++; // move to the next note for animation
+            }
+        }
         if (GameManager.instance.transitionIndex < GameManager.instance.transitionTimes.Length && audioTime >= GameManager.instance.currentTransitionTime) //if the variable we are using to track the elapsed time in the song = GameManager.instance.currentTransitionTime
         //i put >= to give the float a little leeway since it may not catch exactly on the time's decimal places
         //also check the transition index and the transition time array length so stuff doesnt go out of bound
@@ -130,6 +152,7 @@ public class Lane : MonoBehaviour
         public void TransitionToAttack()
     {
         ///switch note tap and note spawn values
+        onAttackPhase = true;
         SongManager.Instance.noteSpawnY = SongManager.Instance.attackNoteSpawnY;
         SongManager.Instance.noteTapY = SongManager.Instance.attackNoteTapY;
         
@@ -148,6 +171,7 @@ public class Lane : MonoBehaviour
     }
     public void TransitionToDefend()
     {
+        onAttackPhase = false;
         ///switch note tap and note spawn values
         SongManager.Instance.noteSpawnY = SongManager.Instance.defendNoteSpawnY;
         SongManager.Instance.noteTapY = SongManager.Instance.defendNoteTapY;
