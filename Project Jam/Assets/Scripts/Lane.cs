@@ -7,6 +7,8 @@ using UnityEngine;
 public class Lane : MonoBehaviour
 {
     public Melanchall.DryWetMidi.MusicTheory.NoteName noteRestriction;
+    public Melanchall.DryWetMidi.MusicTheory.NoteName healNote;
+    public Melanchall.DryWetMidi.MusicTheory.NoteName damageNote;
     public KeyCode input;
     public playerController playerController;
     public RobotController robotController;
@@ -92,7 +94,8 @@ public class Lane : MonoBehaviour
             double timeStamp = timeStamps[inputIndex]; //the time the note is supposed to be hit
             double marginOfError = SongManager.Instance.marginOfError; //basically like the interval of time where the note still counts as a hit/how much leeway the hit has
 
-            if (Input.GetKeyDown(input))
+            //if u tapped a note thats not a damage note
+            if (Input.GetKeyDown(input) && noteRestriction != damageNote)
             {
                 //so we take the differences between the audio time and the time stamp (the current time it is in the song vs when the note is supposed to be hit)
                 //this determines the difference in accuracy of the hit
@@ -130,11 +133,15 @@ public class Lane : MonoBehaviour
                     inputIndex++;
 
                 }
+                //if the note they hit was a healing note
+                if (noteRestriction == healNote)
+                {
+                    //double the players health by healing an extra time here
+                    GameManager.instance.healthManager.PlayerHeal(GameManager.instance.healAmount);
+                }
             }
-            //if you hit the note outside of the leeway interval, you have missed the note (or if you didnt hit the note/press the button period)
-            //basically if the current time that the audio is at right now is greaterthan or equal to the time the note way supposed to be hit 
-            //plus the margin+ of error (leeway time) the user took too long and you have missed the note
-            if (audioTime >= timeStamp + marginOfError)
+            //if u hit a note and its a damage note u basically get the consequences of missing a note
+            else if (Input.GetKeyDown(input) && noteRestriction == damageNote)
             {
                 GameManager.instance.NoteMissed();
                 Instantiate(missEffect, button.transform.position, missEffect.transform.rotation);
@@ -142,6 +149,29 @@ public class Lane : MonoBehaviour
                 print($"Missed {inputIndex} note");
                 inputIndex++;
             }
+                //if you hit the note outside of the leeway interval, you have missed the note (or if you didnt hit the note/press the button period)
+                //basically if the current time that the audio is at right now is greaterthan or equal to the time the note way supposed to be hit 
+                //plus the margin+ of error (leeway time) the user took too long and you have missed the note
+                if (audioTime >= timeStamp + marginOfError)
+                {
+                    //if you dodge the damage note, count it as doing a perfect note and show perfect
+                    if (noteRestriction == damageNote)
+                    {
+                        Debug.Log("Perfect");
+                        GameManager.instance.PerfectHit();
+                        Instantiate(perfectEffect, button.transform.position, perfectEffect.transform.rotation);
+                        print($"Hit on {inputIndex} note");
+                        inputIndex++;
+                    }
+                    else
+                    {
+                        GameManager.instance.NoteMissed();
+                        Instantiate(missEffect, button.transform.position, missEffect.transform.rotation);
+                        playerController.missAnimation();
+                        print($"Missed {inputIndex} note");
+                        inputIndex++;
+                    }
+                }
 
 
 
