@@ -837,6 +837,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   noteRestriction: 11
+  healNote: 6
+  damageNote: 10
   input: 275
   playerController: {fileID: 366721572}
   robotController: {fileID: 1184334790}
@@ -941,6 +943,63 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 488072183}
   m_CullTransparentMesh: 0
+--- !u!1 &506773688
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 506773690}
+  - component: {fileID: 506773689}
+  m_Layer: 0
+  m_Name: Healing Note Lane
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &506773689
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 506773688}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5abd5fc2848e2cb47bcc77e5410652f8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  noteRestriction: 6
+  healNote: 6
+  damageNote: 10
+  input: 276
+  playerController: {fileID: 366721572}
+  robotController: {fileID: 1184334790}
+  notePrefab: {fileID: 6334684575198998685, guid: f635752a019fab24685a7103ff113563, type: 3}
+  button: {fileID: 1878539842}
+  timeStamps: []
+  hitEffect: {fileID: 4941371941923310702, guid: d8cbe6df4bc83bd46ba8ad18e251a6d8, type: 3}
+  goodEffect: {fileID: 3865512272264393289, guid: e811e24b8a761944299634fa69d6859e, type: 3}
+  perfectEffect: {fileID: 2070477747422551375, guid: 2a699521918c05d4780db787ba9953d1, type: 3}
+  missEffect: {fileID: 2569196039938126148, guid: 11da4acc95d453e4cb67ddf130747a5c, type: 3}
+--- !u!4 &506773690
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 506773688}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -1.5, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &536797010
 GameObject:
   m_ObjectHideFlags: 0
@@ -2015,6 +2074,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   noteRestriction: 9
+  healNote: 6
+  damageNote: 10
   input: 273
   playerController: {fileID: 366721572}
   robotController: {fileID: 1184334790}
@@ -2070,6 +2131,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   noteRestriction: 5
+  healNote: 6
+  damageNote: 10
   input: 276
   playerController: {fileID: 366721572}
   robotController: {fileID: 1184334790}
@@ -2295,6 +2358,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   noteRestriction: 7
+  healNote: 6
+  damageNote: 10
   input: 274
   playerController: {fileID: 366721572}
   robotController: {fileID: 1184334790}
@@ -2530,6 +2595,63 @@ MonoBehaviour:
   useTestBeat: 0
   pulseSize: 1.15
   returnSpeed: 5
+--- !u!1 &1218673017
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1218673019}
+  - component: {fileID: 1218673018}
+  m_Layer: 0
+  m_Name: Damage Note Lane
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1218673018
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1218673017}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5abd5fc2848e2cb47bcc77e5410652f8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  noteRestriction: 10
+  healNote: 6
+  damageNote: 10
+  input: 275
+  playerController: {fileID: 366721572}
+  robotController: {fileID: 1184334790}
+  notePrefab: {fileID: 8119455909001866944, guid: 167515e09c4f8014d9405681219939a1, type: 3}
+  button: {fileID: 1734076336}
+  timeStamps: []
+  hitEffect: {fileID: 4941371941923310702, guid: d8cbe6df4bc83bd46ba8ad18e251a6d8, type: 3}
+  goodEffect: {fileID: 3865512272264393289, guid: e811e24b8a761944299634fa69d6859e, type: 3}
+  perfectEffect: {fileID: 2070477747422551375, guid: 2a699521918c05d4780db787ba9953d1, type: 3}
+  missEffect: {fileID: 2569196039938126148, guid: 11da4acc95d453e4cb67ddf130747a5c, type: 3}
+--- !u!4 &1218673019
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1218673017}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.5, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1312830135
 GameObject:
   m_ObjectHideFlags: 0
@@ -5212,6 +5334,8 @@ MonoBehaviour:
   - {fileID: 959676214}
   - {fileID: 1181449344}
   - {fileID: 433476378}
+  - {fileID: 506773689}
+  - {fileID: 1218673018}
   marginOfError: 0.2
   bpm: 184
   intervals:
@@ -5778,10 +5902,12 @@ SceneRoots:
   - {fileID: 1420276966}
   - {fileID: 1984935882}
   - {fileID: 1809491530}
+  - {fileID: 506773690}
   - {fileID: 1086286815}
   - {fileID: 1181449345}
   - {fileID: 959676215}
   - {fileID: 433476379}
+  - {fileID: 1218673019}
   - {fileID: 1662845173}
   - {fileID: 538186472}
   - {fileID: 1726247402}
