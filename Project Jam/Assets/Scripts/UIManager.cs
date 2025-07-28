@@ -7,6 +7,8 @@ using UnityEngine.Windows;
 public class UIManager : MonoBehaviour
 {
     public GameObject pauseUI;
+    public GameObject startScreenUI;
+    public GameObject levelSelectUI;
     public KeyCode input;
     int counter = 0;
 
@@ -34,9 +36,29 @@ public class UIManager : MonoBehaviour
     {
         SceneManager.LoadScene("MenuScene");
     }
-
-    public void OnGameLevelSelectPress()
+    public void QuitGame()
     {
-
+        Application.Quit();
     }
+
+    public void OnGameStartPress()
+    {
+        startScreenUI.SetActive(false);
+        levelSelectUI.SetActive(true);
+    }
+
+    public void BringtoHipHop()
+    {
+        SceneManager.LoadScene("HipHopLevelScene");
+    }
+    public void BringtoJazz()
+    {
+        SceneManager.LoadScene("JazzLevelScene");
+    }
+
+    public void BringtoPunk()
+    {
+        SceneManager.LoadScene("PunkLevelScene");
+    }
+
 }
