@@ -23,9 +23,11 @@ public class Lane : MonoBehaviour
     int robotAnimIndex = 0;
     public static bool onAttackPhase;
 
+
     // Start is called before the first frame update
     void Start()
     {
+
         //the attack phase goes first in the song
         onAttackPhase = true;
     }
