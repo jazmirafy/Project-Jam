@@ -11,4 +11,13 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/MenuScene.unity
     guid: fc0fbb7cd874e79448e8b392e7762a52
+  - enabled: 0
+    path: Assets/Scenes/HipHopLevelScene.unity
+    guid: 187d9357f76f65e499ebec5eadab12f9
+  - enabled: 0
+    path: Assets/Scenes/JazzLevelScene.unity
+    guid: 4a6879a639a4c5848b24509806038f6e
+  - enabled: 1
+    path: Assets/Scenes/PunkLevelScene.unity
+    guid: 4b5876289baf4c745a07b292fc303964
   m_configObjects: {}
