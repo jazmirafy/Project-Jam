@@ -36,4 +36,8 @@ public class RobotController : MonoBehaviour
 
         }
     }
+    public void IdleAnimation()
+    {
+        animator.SetTrigger("idle");
+    }
 }
