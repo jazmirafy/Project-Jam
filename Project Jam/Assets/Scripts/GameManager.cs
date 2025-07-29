@@ -38,6 +38,7 @@ public class GameManager : MonoBehaviour
     public bool onAttackPhase; //helps us know if we are on attack or defend phase
                                // public bool hasStarted; //checking if the player clicked a button to start the song(the beat scrolling)
     public GameObject tapButtons;
+    public UIManager UIManager;
     //public float tapButtonY = tapButtons.transform.position.y;
     
     

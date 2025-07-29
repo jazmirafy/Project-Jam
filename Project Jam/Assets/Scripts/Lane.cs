@@ -25,8 +25,8 @@ public class Lane : MonoBehaviour
     int inputIndex = 0;
     int robotAnimIndex = 0;
     public static bool onAttackPhase;
-    public UnityEngine.UI.Image attackImage;
-    public UnityEngine.UI.Image defendImage;
+    public GameObject attackImage;
+    public GameObject defendImage;
 
 
     // Start is called before the first frame update
