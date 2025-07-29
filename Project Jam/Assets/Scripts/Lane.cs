@@ -1,8 +1,10 @@
 ﻿using Melanchall.DryWetMidi.Interaction;
+using Microsoft.Unity.VisualStudio.Editor;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Lane : MonoBehaviour
 {
@@ -12,6 +14,7 @@ public class Lane : MonoBehaviour
     public KeyCode input;
     public playerController playerController;
     public RobotController robotController;
+    public UIManager UIManager;
     public GameObject notePrefab;
     public GameObject button;
     List<Note> notes = new List<Note>();
@@ -22,6 +25,8 @@ public class Lane : MonoBehaviour
     int inputIndex = 0;
     int robotAnimIndex = 0;
     public static bool onAttackPhase;
+    public UnityEngine.UI.Image attackImage;
+    public UnityEngine.UI.Image defendImage;
 
 
     // Start is called before the first frame update
@@ -183,6 +188,7 @@ public class Lane : MonoBehaviour
     }
         public void TransitionToAttack()
     {
+        StartCoroutine(UIManager.ShowPopUp(attackImage, 3f));
         ///switch note tap and note spawn values
         onAttackPhase = true;
         SongManager.Instance.noteSpawnY = SongManager.Instance.attackNoteSpawnY;
@@ -203,6 +209,8 @@ public class Lane : MonoBehaviour
     }
     public void TransitionToDefend()
     {
+        StartCoroutine(UIManager.ShowPopUp(defendImage, 3f));
+
         onAttackPhase = false;
         ///switch note tap and note spawn values
         SongManager.Instance.noteSpawnY = SongManager.Instance.defendNoteSpawnY;
