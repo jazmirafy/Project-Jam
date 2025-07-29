@@ -4,6 +4,7 @@ using System.Diagnostics.Tracing;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UIElements;
+using UnityEngine.UI;
 using UnityEngine.Windows;
 
 public class UIManager : MonoBehaviour
@@ -15,11 +16,12 @@ public class UIManager : MonoBehaviour
     public GameObject startHoverImage;
     public GameObject quitHoverImage;
 
-    public List <GameObject> popUpList;
+    public List<GameObject> popUpList;
     private GameObject currentPopUp;
     private float timer = 0;
     public float popUpTime;
     private int i = 0;
+
 
     public KeyCode inputForPauseButton;
     int counter = 0;
@@ -129,5 +131,13 @@ public class UIManager : MonoBehaviour
             timer = 0;
             i++;
         }
+    }
+
+    //pop up any image method
+    public IEnumerator ShowPopUp(UnityEngine.UI.Image popUpImage, float popUpLength)
+    {
+        popUpImage.gameObject.SetActive(true); //enables the pop up
+        yield return new WaitForSeconds(popUpLength);
+        popUpImage.gameObject.SetActive(false); //disables the pop up 
     }
 }
