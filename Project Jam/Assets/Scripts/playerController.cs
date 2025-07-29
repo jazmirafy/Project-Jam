@@ -18,8 +18,8 @@ public class playerController : MonoBehaviour
         //left
         if (Input.GetKeyDown(KeyCode.LeftArrow))
             animator.SetTrigger("leftHeld");
-    
-     
+
+
 
         // right
         if (Input.GetKeyDown(KeyCode.RightArrow))
@@ -29,20 +29,24 @@ public class playerController : MonoBehaviour
         //up
         if (Input.GetKeyDown(KeyCode.UpArrow))
             animator.SetTrigger("upHeld");
-    
+
 
         // down
         if (Input.GetKeyDown(KeyCode.DownArrow))
             animator.SetTrigger("downHeld");
 
-        
 
-        
+
+
     }
     //miss trigger
     public void missAnimation()
     {
         animator.SetTrigger("miss");
+    }
+    public void IdleAnimation()
+    {
+        animator.SetTrigger("idle");
     }
 }
 
