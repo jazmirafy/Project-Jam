@@ -38,6 +38,8 @@ public class GameManager : MonoBehaviour
     public bool onAttackPhase; //helps us know if we are on attack or defend phase
                                // public bool hasStarted; //checking if the player clicked a button to start the song(the beat scrolling)
     public GameObject tapButtons;
+    public UIManager UIManager;
+
     //public float tapButtonY = tapButtons.transform.position.y;
     
     
@@ -56,15 +58,25 @@ public class GameManager : MonoBehaviour
         currentMultiplier = 1;
         currentTransitionTime = transitionTimes[0]; //set the current transition time to the first transition time in the list at start
 
+
+        Debug.Log("Is the music playing: " + levelMusic.isPlaying);
+        Debug.Log("Is the results screen active in hierarchy: " + resultsScreen.activeInHierarchy);
+        Debug.Log("Is the game paused: " + UIManager.isPaused);
     }
 
     // Update is called once per frame
     void Update()
     {
+
         
-            if (!levelMusic.isPlaying && !resultsScreen.activeInHierarchy)
+
+        if (!levelMusic.isPlaying && !resultsScreen.activeInHierarchy && !UIManager.isPaused)
             {
-                resultsScreen.SetActive(true);
+            Debug.Log("Is the music playing: " + levelMusic.isPlaying);
+            Debug.Log("Is the results screen active in hierarchy: " + resultsScreen.activeInHierarchy);
+            Debug.Log("Is the game paused: " + UIManager.isPaused);
+
+            resultsScreen.SetActive(true);
                 normalText.text = normalHits.ToString();
                 goodText.text = goodHits.ToString();
                 perfectText.text = perfectHits.ToString();

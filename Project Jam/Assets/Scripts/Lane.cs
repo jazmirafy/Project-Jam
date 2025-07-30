@@ -25,8 +25,11 @@ public class Lane : MonoBehaviour
     int inputIndex = 0;
     int robotAnimIndex = 0;
     public static bool onAttackPhase;
-    public UnityEngine.UI.Image attackImage;
-    public UnityEngine.UI.Image defendImage;
+    public GameObject attackImage;
+    public GameObject defendImage;
+
+    public GameObject attackBackground;
+    public GameObject defendBackground;
 
 
     // Start is called before the first frame update
@@ -188,7 +191,10 @@ public class Lane : MonoBehaviour
     }
         public void TransitionToAttack()
     {
+        //UI transition pop up
         StartCoroutine(UIManager.ShowPopUp(attackImage, 3f));
+        //UI transition background
+        UIManager.ShowNewBackground(attackBackground, defendBackground);
         ///switch note tap and note spawn values
         onAttackPhase = true;
         SongManager.Instance.noteSpawnY = SongManager.Instance.attackNoteSpawnY;
@@ -209,7 +215,10 @@ public class Lane : MonoBehaviour
     }
     public void TransitionToDefend()
     {
+        //UI transition pop up
         StartCoroutine(UIManager.ShowPopUp(defendImage, 3f));
+        //UI transition background
+        UIManager.ShowNewBackground(defendBackground, attackBackground);
 
         onAttackPhase = false;
         ///switch note tap and note spawn values

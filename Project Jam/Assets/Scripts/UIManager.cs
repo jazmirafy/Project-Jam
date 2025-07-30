@@ -16,22 +16,26 @@ public class UIManager : MonoBehaviour
     public GameObject startHoverImage;
     public GameObject quitHoverImage;
 
-    public List<GameObject> popUpList;
-    private GameObject currentPopUp;
-    private float timer = 0;
+    
+
+    //public List<GameObject> popUpList;
+    //private GameObject currentPopUp;
+    //private float timer = 0;
     public float popUpTime;
-    private int i = 0;
+    //private int i = 0;
 
 
     public KeyCode inputForPauseButton;
     int counter = 0;
+
+    public bool isPaused = false;
 
 
 
     // BUTTONS!!
 
 
-    //pause button
+    //pause button UI
     private void Update()
     {
         if (UnityEngine.Input.GetKeyDown(inputForPauseButton))
@@ -39,12 +43,29 @@ public class UIManager : MonoBehaviour
             counter++;
             if (counter % 2 == 0)
             {
+                isPaused = false;
+                OnGamePause(isPaused);
                 pauseUI.SetActive(false);
             }
             else
             {
+                isPaused = true;
+                OnGamePause(isPaused);
                 pauseUI.SetActive(true);
             }
+        }
+    }
+
+    //pausing the actual game
+    public void OnGamePause(bool pauseStatus)
+    {
+        if (pauseStatus) // if app is paused
+        {
+            PauseGame();
+        }
+        else // App resumes
+        {
+            ResumeGame();
         }
     }
 
@@ -52,6 +73,11 @@ public class UIManager : MonoBehaviour
     public void OnRestartPress()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
+    public void OnGameLevelSelectPress()
+    {
+        
     }
 
     public void OnGameQuitPress()
@@ -115,29 +141,61 @@ public class UIManager : MonoBehaviour
 
 
 
-    //pop up script
-    public void popupFunc()
-    {
-        currentPopUp = popUpList[i % popUpList.Count];
-        currentPopUp.SetActive(true);
+    //pop up script draft
+    //public void popupFunc()
+    //{
+    //    currentPopUp = popUpList[i % popUpList.Count];
+    //    currentPopUp.SetActive(true);
 
-        if (timer < popUpTime)
-        {
-            timer += Time.deltaTime;
-        }
-        else
-        {
-            currentPopUp.SetActive(false);
-            timer = 0;
-            i++;
+    //    if (timer < popUpTime)
+    //    {
+    //        timer += Time.deltaTime;
+    //    }
+    //    else
+    //    {
+    //        currentPopUp.SetActive(false);
+    //        timer = 0;
+    //        i++;
+    //    }
+    //}
+
+
+
+    //pop up any image method
+    public IEnumerator ShowPopUp(GameObject popUpImage, float popUpLength)
+    {
+        popUpImage.gameObject.SetActive(true); //enables the pop up
+        Debug.Log("POP UP SHOWN");
+        yield return new WaitForSeconds(popUpLength);
+        popUpImage.gameObject.SetActive(false); //disables the pop up 
+        Debug.Log("POP UP DEACTIVATED");
+    }
+
+
+    //Switch current background
+    public void ShowNewBackground(GameObject firstBackground, GameObject secondBackground)
+    {
+        if (!firstBackground.activeSelf && secondBackground.activeSelf) {
+            firstBackground.gameObject.SetActive(true); //enables the first background
+            secondBackground.gameObject.SetActive(false); //disables the second background
         }
     }
 
-    //pop up any image method
-    public IEnumerator ShowPopUp(UnityEngine.UI.Image popUpImage, float popUpLength)
+
+
+    //pausing and resuming game
+
+    void PauseGame()
     {
-        popUpImage.gameObject.SetActive(true); //enables the pop up
-        yield return new WaitForSeconds(popUpLength);
-        popUpImage.gameObject.SetActive(false); //disables the pop up 
+        Time.timeScale = 0f; // stop game time
+        AudioListener.pause = true; // stop audio
+        isPaused = true;
+    }
+
+    void ResumeGame()
+    {
+        Time.timeScale = 1f; // continue game time
+        AudioListener.pause = false; // resume audio
+        isPaused = false;
     }
 }
