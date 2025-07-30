@@ -16,6 +16,8 @@ public class UIManager : MonoBehaviour
     public GameObject startHoverImage;
     public GameObject quitHoverImage;
 
+    
+
     //public List<GameObject> popUpList;
     //private GameObject currentPopUp;
     //private float timer = 0;
@@ -167,6 +169,16 @@ public class UIManager : MonoBehaviour
         yield return new WaitForSeconds(popUpLength);
         popUpImage.gameObject.SetActive(false); //disables the pop up 
         Debug.Log("POP UP DEACTIVATED");
+    }
+
+
+    //Switch current background
+    public void ShowNewBackground(GameObject firstBackground, GameObject secondBackground)
+    {
+        if (!firstBackground.activeSelf && secondBackground.activeSelf) {
+            firstBackground.gameObject.SetActive(true); //enables the first background
+            secondBackground.gameObject.SetActive(false); //disables the second background
+        }
     }
 
 
