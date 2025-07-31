@@ -10,7 +10,8 @@ public class Lane : MonoBehaviour
     public Melanchall.DryWetMidi.MusicTheory.NoteName noteRestriction;
     public Melanchall.DryWetMidi.MusicTheory.NoteName healNote;
     public Melanchall.DryWetMidi.MusicTheory.NoteName damageNote;
-    public KeyCode input;
+    public KeyCode keyboardInput;
+    public KeyCode controllerInput;
     public playerController playerController;
     public RobotController robotController;
     public UIManager UIManager;
@@ -104,7 +105,7 @@ public class Lane : MonoBehaviour
             double marginOfError = SongManager.Instance.marginOfError; //basically like the interval of time where the note still counts as a hit/how much leeway the hit has
 
             //if u tapped a note thats not a damage note
-            if (Input.GetKeyDown(input) && noteRestriction != damageNote)
+            if ((Input.GetKeyDown(keyboardInput) || Input.GetKeyDown(controllerInput)) && noteRestriction != damageNote)
             {
                 //so we take the differences between the audio time and the time stamp (the current time it is in the song vs when the note is supposed to be hit)
                 //this determines the difference in accuracy of the hit
@@ -150,7 +151,7 @@ public class Lane : MonoBehaviour
                 }
             }
             //if u hit a note and its a damage note u basically get the consequences of missing a note
-            else if (Input.GetKeyDown(input) && noteRestriction == damageNote)
+            else if ((Input.GetKeyDown(keyboardInput) || Input.GetKeyDown(controllerInput)) && noteRestriction == damageNote)
             {
                 GameManager.instance.NoteMissed();
                 Instantiate(missEffect, button.transform.position, missEffect.transform.rotation);
