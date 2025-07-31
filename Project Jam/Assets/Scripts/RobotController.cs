@@ -20,17 +20,28 @@ public class RobotController : MonoBehaviour
         //since each lane is mapped to a piano note i just do the appropriate animation based on what lane the note came from
         switch (noteRestriction)
         {
-
+            //heal note lane
+            case Melanchall.DryWetMidi.MusicTheory.NoteName.FSharp:
+                animator.SetTrigger("leftHeld");
+                break;
+            //left most lane
             case Melanchall.DryWetMidi.MusicTheory.NoteName.F:
                 animator.SetTrigger("leftHeld");
                 break;
+            //inner left lane
             case Melanchall.DryWetMidi.MusicTheory.NoteName.G:
                 animator.SetTrigger("downHeld");
                 break;
+            //inner right lane
             case Melanchall.DryWetMidi.MusicTheory.NoteName.A:
                 animator.SetTrigger("upHeld");
                 break;
+            //rightmost lane
             case Melanchall.DryWetMidi.MusicTheory.NoteName.B:
+                animator.SetTrigger("rightHeld");
+                break;
+            //damage note lane
+            case Melanchall.DryWetMidi.MusicTheory.NoteName.ASharp:
                 animator.SetTrigger("rightHeld");
                 break;
 
