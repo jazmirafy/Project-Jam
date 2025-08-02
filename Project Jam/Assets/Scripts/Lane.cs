@@ -39,6 +39,7 @@ public class Lane : MonoBehaviour
         //the attack phase goes first in the song
         onAttackPhase = true;
     }
+    
     public void SetTimeStamps(Melanchall.DryWetMidi.Interaction.Note[] array)
     {
         foreach (var note in array)
@@ -53,7 +54,18 @@ public class Lane : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        // Debug.Log("Connected Joysticks: " + Input.GetJoystickNames().Length);
+        // foreach (var name in Input.GetJoystickNames())
+        // {
+        //     Debug.Log("Joystick detected: " + name);
+        // }
+        // Debug.Log($"{controllerInput}: {Input.GetAxisRaw(controllerInput)}");
+        //     for (int i = 1; i <= 20; i++)
+        // {
+        //     float value = Input.GetAxisRaw("Axis " + i);
+        //     if (Mathf.Abs(value) > 0.1f)
+        //         Debug.Log($"Axis {i}: {value}");
+        // }
         if (spawnIndex < timeStamps.Count)
         {
             if (SongManager.GetAudioSourceTime() >= timeStamps[spawnIndex] - SongManager.Instance.noteTime)
@@ -146,8 +158,8 @@ public class Lane : MonoBehaviour
                 //if the note they hit was a healing note
                 if (noteRestriction == healNote)
                 {
-                    //double the players health by healing an extra time here
-                    GameManager.instance.healthManager.PlayerHeal(GameManager.instance.healAmount);
+                    //triple the players health by healing an extra health here (double the health here and one more time in the game manager script)
+                    GameManager.instance.healthManager.PlayerHeal(GameManager.instance.healAmount * 2);
                 }
             }
             //if u hit a note and its a damage note u basically get the consequences of missing a note
