@@ -1036,7 +1036,7 @@ MonoBehaviour:
   healNote: 6
   damageNote: 10
   keyboardInput: 107
-  controllerInput: 341
+  controllerInput: 337
   playerController: {fileID: 366721572}
   robotController: {fileID: 1184334790}
   UIManager: {fileID: 1972412058}
@@ -1262,7 +1262,7 @@ MonoBehaviour:
   healNote: 6
   damageNote: 10
   keyboardInput: 100
-  controllerInput: 340
+  controllerInput: 336
   playerController: {fileID: 366721572}
   robotController: {fileID: 1184334790}
   UIManager: {fileID: 1972412058}
@@ -3145,7 +3145,7 @@ MonoBehaviour:
   healNote: 6
   damageNote: 10
   keyboardInput: 106
-  controllerInput: 339
+  controllerInput: 335
   playerController: {fileID: 366721572}
   robotController: {fileID: 1184334790}
   UIManager: {fileID: 1972412058}
@@ -3494,7 +3494,7 @@ MonoBehaviour:
   healNote: 6
   damageNote: 10
   keyboardInput: 100
-  controllerInput: 340
+  controllerInput: 336
   playerController: {fileID: 366721572}
   robotController: {fileID: 1184334790}
   UIManager: {fileID: 1972412058}
@@ -3986,7 +3986,7 @@ MonoBehaviour:
   healNote: 6
   damageNote: 10
   keyboardInput: 102
-  controllerInput: 338
+  controllerInput: 334
   playerController: {fileID: 366721572}
   robotController: {fileID: 1184334790}
   UIManager: {fileID: 1972412058}
@@ -4343,7 +4343,7 @@ MonoBehaviour:
   healNote: 6
   damageNote: 10
   keyboardInput: 107
-  controllerInput: 341
+  controllerInput: 337
   playerController: {fileID: 366721572}
   robotController: {fileID: 1184334790}
   UIManager: {fileID: 1972412058}
@@ -8841,8 +8841,8 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
-        - m_Target: {fileID: 366721572}
-          m_TargetAssemblyTypeName: playerController, Assembly-CSharp
+        - m_Target: {fileID: 1184334790}
+          m_TargetAssemblyTypeName: RobotController, Assembly-CSharp
           m_MethodName: IdleAnimation
           m_Mode: 1
           m_Arguments:
@@ -8853,8 +8853,8 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
-        - m_Target: {fileID: 1184334790}
-          m_TargetAssemblyTypeName: RobotController, Assembly-CSharp
+        - m_Target: {fileID: 366721572}
+          m_TargetAssemblyTypeName: playerController, Assembly-CSharp
           m_MethodName: IdleAnimation
           m_Mode: 1
           m_Arguments:

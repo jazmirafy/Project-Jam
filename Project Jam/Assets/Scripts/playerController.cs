@@ -15,24 +15,29 @@ public class playerController : MonoBehaviour
 
     void Update()
     {
+                for (int i = 0; i < 20; i++) {
+            if (Input.GetKeyDown("joystick button " + i)) {
+                Debug.Log("Button " + i + " was pressed");
+            }
+        }
         //left
-        if (Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.JoystickButton10))
+        if (Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.JoystickButton6) )
             animator.SetTrigger("leftHeld");
 
 
 
         // right
-        if (Input.GetKeyDown(KeyCode.F) || Input.GetKeyDown(KeyCode.JoystickButton8))
+        if (Input.GetKeyDown(KeyCode.F) || Input.GetKeyDown(KeyCode.JoystickButton5) )
             animator.SetTrigger("rightHeld");
 
 
         //up
-        if (Input.GetKeyDown(KeyCode.J) || Input.GetKeyDown(KeyCode.JoystickButton9))
+        if (Input.GetKeyDown(KeyCode.J) || Input.GetKeyDown(KeyCode.JoystickButton4))
             animator.SetTrigger("upHeld");
 
 
         // down
-        if (Input.GetKeyDown(KeyCode.K) || Input.GetKeyDown(KeyCode.JoystickButton11))
+        if (Input.GetKeyDown(KeyCode.K) || Input.GetKeyDown(KeyCode.JoystickButton7))
             animator.SetTrigger("downHeld");
 
 
