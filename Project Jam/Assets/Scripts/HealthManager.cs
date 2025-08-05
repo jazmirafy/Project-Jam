@@ -10,6 +10,8 @@ public class HealthManager : MonoBehaviour
     public float playerHealthAmount = 100f;
     public Image robotHealthBar;
     public float robotHealthAmount = 100f;
+
+    public UIManager UIManager;
     // Start is called before the first frame update
     void Start()
     {
@@ -29,6 +31,10 @@ public class HealthManager : MonoBehaviour
         {
             playerHealthAmount -= damage;
             playerHealthBar.fillAmount = playerHealthAmount / 100f;
+        }
+        else
+        {
+            UIManager.onGameOver();
         }
         Debug.Log("player took damage. new health:" + playerHealthAmount);
     }
