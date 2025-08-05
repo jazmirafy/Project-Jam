@@ -16,7 +16,7 @@ public class UIManager : MonoBehaviour
     public GameObject startHoverImage;
     public GameObject quitHoverImage;
 
-    
+    public GameObject gameOverImage;
 
     //public List<GameObject> popUpList;
     //private GameObject currentPopUp;
@@ -181,6 +181,12 @@ public class UIManager : MonoBehaviour
         }
     }
 
+    //stops game when the player health = 0
+    public void onGameOver()
+    {
+        PauseGame();
+        gameOverImage.SetActive(true);
+    }
 
 
     //pausing and resuming game
