@@ -176,6 +176,7 @@ public class Lane : MonoBehaviour
                 //plus the margin+ of error (leeway time) the user took too long and you have missed the note
                 if (audioTime >= timeStamp + marginOfError)
                 {
+                    
                     //if you dodge the damage note, count it as doing a perfect note and show perfect
                     if (noteRestriction == damageNote)
                     {
@@ -189,6 +190,7 @@ public class Lane : MonoBehaviour
                     {
                         GameManager.instance.NoteMissed();
                         Instantiate(missEffect, button.transform.position, missEffect.transform.rotation);
+                    SoundManager.PlaySound(SoundType.MissNote);
                         playerController.missAnimation();
                         print($"Missed {inputIndex} note");
                         inputIndex++;
