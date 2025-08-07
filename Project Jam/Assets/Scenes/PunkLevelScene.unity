@@ -3366,6 +3366,269 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 644930651}
   m_CullTransparentMesh: 1
+--- !u!1 &654297081
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 654297084}
+  - component: {fileID: 654297082}
+  - component: {fileID: 654297083}
+  - component: {fileID: 654297085}
+  m_Layer: 0
+  m_Name: SoundManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &654297082
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 654297081}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d34887a39cee825418c4d0cc4e4b9013, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mainMenuMusic: {fileID: 8300000, guid: 2410a26c422ff4b9fb0a086c573e9976, type: 3}
+  levelMusic: {fileID: 8300000, guid: b554ab9f8876145c8bfb9ed0bcfc4578, type: 3}
+  pauseMusic: {fileID: 8300000, guid: 2410a26c422ff4b9fb0a086c573e9976, type: 3}
+  winScreenMusic: {fileID: 8300000, guid: a53b1fe7b7eef415e96797a6d793ac09, type: 3}
+  loseScreenMusic: {fileID: 8300000, guid: 870c37bc33c334faca4a88ea0471c074, type: 3}
+  soundList:
+  - name: Test
+    sounds:
+    - {fileID: 0}
+  - name: PerfectNote
+    sounds:
+    - {fileID: 8300000, guid: 830ecb58df6924ba2a1cf00c6df2724c, type: 3}
+  - name: HitNote
+    sounds:
+    - {fileID: 8300000, guid: 680e71ec770ef47e2b06a2437c268ce6, type: 3}
+  - name: MissNote
+    sounds:
+    - {fileID: 8300000, guid: c93a6665e66e2482b9a92d6d6a3416e5, type: 3}
+    - {fileID: 8300000, guid: 7930c36ae443b48cdb788fb739fbd7d2, type: 3}
+    - {fileID: 8300000, guid: 9bbe13284e4734dffae49130f42ddcb6, type: 3}
+    - {fileID: 8300000, guid: 77c07e9f191e50840ab40acde03bce76, type: 3}
+  - name: CancelSFX
+    sounds: []
+  - name: ConfirmSFX
+    sounds: []
+--- !u!82 &654297083
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 654297081}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!4 &654297084
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 654297081}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 675.93787, y: -142.21017, z: -11.109152}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!82 &654297085
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 654297081}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &671222722
 GameObject:
   m_ObjectHideFlags: 0
@@ -4152,38 +4415,24 @@ MonoBehaviour:
   levelMusic: {fileID: 1809491529}
   startPlaying: 0
   healthManager: {fileID: 1726247401}
-  currentScore: 0
   scorePerNote: 100
   scorePerGoodNote: 125
   scorePerPerfectNote: 150
-  totalNotes: 0
-  normalHits: 0
-  goodHits: 0
-  perfectHits: 0
-  missedHits: 0
   healAmount: 0.5
   damageAmount: 5
   resultsScreen: {fileID: 846047953}
-  percentHitText: {fileID: 2101821062}
-  normalText: {fileID: 2094783505}
-  goodText: {fileID: 86286478}
-  perfectText: {fileID: 1507909073}
-  missedText: {fileID: 1585508517}
-  rankText: {fileID: 2008363882}
-  finalScoreText: {fileID: 788836336}
-  currentMultiplier: 1
-  multiplierTracker: 0
   multiplierThresholds: 040000000800000010000000
   scoreText: {fileID: 934499573}
   multiplierText: {fileID: 178196414}
   transitionTimes:
   - 44.34
   - 106.95
+  gameEndTime: 158
   currentTransitionTime: 10
   transitionIndex: 0
-  onAttackPhase: 0
   tapButtons: {fileID: 1662845172}
   UIManager: {fileID: 1972412058}
+  gameEnded: 0
 --- !u!4 &875004282
 Transform:
   m_ObjectHideFlags: 0
@@ -12898,6 +13147,7 @@ SceneRoots:
   m_Roots:
   - {fileID: 1420276966}
   - {fileID: 1809491530}
+  - {fileID: 654297084}
   - {fileID: 1984935882}
   - {fileID: 875004282}
   - {fileID: 1726247402}

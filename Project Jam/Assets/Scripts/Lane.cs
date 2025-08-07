@@ -109,6 +109,10 @@ public class Lane : MonoBehaviour
                 TransitionToAttack();
             }
         }
+        if (audioTime >= GameManager.instance.gameEndTime)
+        {
+            GameManager.instance.gameEnded = true;
+        }
 
         if (inputIndex < timeStamps.Count)
         {
@@ -128,6 +132,7 @@ public class Lane : MonoBehaviour
                 {
                     Debug.Log("Perfect");
                     GameManager.instance.PerfectHit();
+                    SoundManager.PlaySound(SoundType.PerfectNote, .4f);
                     Instantiate(perfectEffect, button.transform.position, perfectEffect.transform.rotation);
                     print($"Hit on {inputIndex} note");
                     Destroy(notes[inputIndex].gameObject);
@@ -139,6 +144,7 @@ public class Lane : MonoBehaviour
                 {
                     Debug.Log("Good");
                     GameManager.instance.GoodHit();
+                    SoundManager.PlaySound(SoundType.HitNote, .4f);
                     Instantiate(goodEffect, button.transform.position, goodEffect.transform.rotation);
                     Destroy(notes[inputIndex].gameObject);
                     inputIndex++;
@@ -149,6 +155,7 @@ public class Lane : MonoBehaviour
                 {
                     Debug.Log("Normal");
                     GameManager.instance.NormalHit();
+                    SoundManager.PlaySound(SoundType.HitNote, .4f);
                     Instantiate(hitEffect, button.transform.position, hitEffect.transform.rotation);
                     print($"Hit inaccurate on {inputIndex} note with {Math.Abs(audioTime - timeStamp)} delay");
                     Destroy(notes[inputIndex].gameObject);
@@ -163,39 +170,41 @@ public class Lane : MonoBehaviour
                 }
             }
             //if u hit a note and its a damage note u basically get the consequences of missing a note
-            else if ((Input.GetKeyDown(keyboardInput) || Input.GetKeyDown(controllerInput)) && noteRestriction == damageNote)
+            else if ((Input.GetKeyDown(keyboardInput) || Input.GetKeyDown(controllerInput)) && Math.Abs(audioTime - timeStamp) < marginOfError && noteRestriction == damageNote)
             {
                 GameManager.instance.NoteMissed();
+                SoundManager.PlaySound(SoundType.MissNote, .4f);
                 Instantiate(missEffect, button.transform.position, missEffect.transform.rotation);
                 playerController.missAnimation();
                 print($"Missed {inputIndex} note");
                 inputIndex++;
             }
-                //if you hit the note outside of the leeway interval, you have missed the note (or if you didnt hit the note/press the button period)
-                //basically if the current time that the audio is at right now is greaterthan or equal to the time the note way supposed to be hit 
-                //plus the margin+ of error (leeway time) the user took too long and you have missed the note
-                if (audioTime >= timeStamp + marginOfError)
+            //if you hit the note outside of the leeway interval, you have missed the note (or if you didnt hit the note/press the button period)
+            //basically if the current time that the audio is at right now is greaterthan or equal to the time the note way supposed to be hit 
+            //plus the margin+ of error (leeway time) the user took too long and you have missed the note
+            if (audioTime >= timeStamp + marginOfError)
+            {
+
+                //if you dodge the damage note, count it as doing a perfect note and show perfect
+                if (noteRestriction == damageNote)
                 {
-                    
-                    //if you dodge the damage note, count it as doing a perfect note and show perfect
-                    if (noteRestriction == damageNote)
-                    {
-                        Debug.Log("Perfect");
-                        GameManager.instance.PerfectHit();
-                        Instantiate(perfectEffect, button.transform.position, perfectEffect.transform.rotation);
-                        print($"Hit on {inputIndex} note");
-                        inputIndex++;
-                    }
-                    else
-                    {
-                        GameManager.instance.NoteMissed();
-                        Instantiate(missEffect, button.transform.position, missEffect.transform.rotation);
-                    SoundManager.PlaySound(SoundType.MissNote);
-                        playerController.missAnimation();
-                        print($"Missed {inputIndex} note");
-                        inputIndex++;
-                    }
+                    Debug.Log("Perfect");
+                    GameManager.instance.PerfectHit();
+                    SoundManager.PlaySound(SoundType.PerfectNote, .4f);
+                    Instantiate(perfectEffect, button.transform.position, perfectEffect.transform.rotation);
+                    print($"Hit on {inputIndex} note");
+                    inputIndex++;
                 }
+                else
+                {
+                    GameManager.instance.NoteMissed();
+                    Instantiate(missEffect, button.transform.position, missEffect.transform.rotation);
+                    SoundManager.PlaySound(SoundType.MissNote, .4f);
+                    playerController.missAnimation();
+                    print($"Missed {inputIndex} note");
+                    inputIndex++;
+                }
+            }
 
 
 

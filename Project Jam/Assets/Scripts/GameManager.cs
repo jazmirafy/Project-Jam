@@ -9,20 +9,16 @@ public class GameManager : MonoBehaviour
     public bool startPlaying;
     //public BeatScroller beatScroller;
     public HealthManager healthManager;
-    public static GameManager instance; //so i dont need to drag this script to each and every note thats hella work
-    public int currentScore;
-    public int scorePerNote;
-    public int scorePerGoodNote = 125;
-    public int scorePerPerfectNote = 150;
-    public float totalNotes, normalHits, goodHits, perfectHits, missedHits;
+    public static GameManager instance; 
+    private int currentScore;
+    public int scorePerNote, scorePerGoodNote = 125, scorePerPerfectNote = 150;
+    private float totalNotes, normalHits, goodHits, perfectHits, missedHits;
     public float healAmount, damageAmount;
     public GameObject resultsScreen;
-    public Text percentHitText, normalText, goodText, perfectText, missedText, rankText, finalScoreText;
-    public int currentMultiplier; 
-    public int multiplierTracker; //tracks your in a row hit streak
+    private Text percentHitText, normalText, goodText, perfectText, missedText, rankText, finalScoreText;
+    private int currentMultiplier, multiplierTracker; //tracks your in a row hit streak
     public int[] multiplierThresholds; //the threshold of of in a row hits u need to level up your multiplyer
-    public Text scoreText;
-    public Text multiplierText;
+    public Text scoreText, multiplierText;
     // Start is called before the first frame update
    // public float elapsedMusicTime;//the amount of time that has passed since the start of the music
    // public float musicStartTime; // record of the time since the music start
@@ -33,16 +29,17 @@ public class GameManager : MonoBehaviour
     this note to self is to help for when u decide if your gonna call the method to transition to defend phase or transition to the attack phase
     im thinking we do a transitionToAttack and transitionToDefend method to control which buttons are activates and what direction the 
     beat escroller moves the notes*/
+    public float gameEndTime; //the end of the song
+
     public float currentTransitionTime; //the current time we are looking for a transition at
     public int transitionIndex; //the transition index we are currently at
-    public bool onAttackPhase; //helps us know if we are on attack or defend phase
-                               // public bool hasStarted; //checking if the player clicked a button to start the song(the beat scrolling)
     public GameObject tapButtons;
     public UIManager UIManager;
-
+    public bool gameEnded = false;
+    
     //public float tapButtonY = tapButtons.transform.position.y;
-    
-    
+
+
 
     void Awake()
     {
@@ -70,13 +67,12 @@ public class GameManager : MonoBehaviour
 
         
 
-        if (!levelMusic.isPlaying && !resultsScreen.activeInHierarchy && !UIManager.isPaused)
+        if ( gameEnded && !resultsScreen.activeInHierarchy && !UIManager.isPaused)
             {
-            Debug.Log("Is the music playing: " + levelMusic.isPlaying);
             Debug.Log("Is the results screen active in hierarchy: " + resultsScreen.activeInHierarchy);
             Debug.Log("Is the game paused: " + UIManager.isPaused);
 
-            resultsScreen.SetActive(true);
+                resultsScreen.SetActive(true);
                 normalText.text = normalHits.ToString();
                 goodText.text = goodHits.ToString();
                 perfectText.text = perfectHits.ToString();
