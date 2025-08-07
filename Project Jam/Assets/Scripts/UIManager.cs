@@ -77,7 +77,7 @@ public class UIManager : MonoBehaviour
 
     public void OnGameLevelSelectPress()
     {
-        
+
     }
 
     public void OnGameQuitPress()
@@ -175,12 +175,24 @@ public class UIManager : MonoBehaviour
     //Switch current background
     public void ShowNewBackground(GameObject firstBackground, GameObject secondBackground)
     {
-        if (!firstBackground.activeSelf && secondBackground.activeSelf) {
+        if (!firstBackground.activeSelf && secondBackground.activeSelf)
+        {
             firstBackground.gameObject.SetActive(true); //enables the first background
             secondBackground.gameObject.SetActive(false); //disables the second background
         }
     }
 
+    //play the confirm button sfx
+    public void PlayConfirmSFX()
+    {
+        SoundManager.PlaySound(SoundType.ConfirmSFX);
+    }
+
+    //play the cancel sfx
+    public void PlayCancelSFX()
+    {
+        SoundManager.PlaySound(SoundType.CancelSFX);
+    }
     //stops game when the player health = 0
     public void onGameOver()
     {
@@ -204,4 +216,5 @@ public class UIManager : MonoBehaviour
         AudioListener.pause = false; // resume audio
         isPaused = false;
     }
+
 }
