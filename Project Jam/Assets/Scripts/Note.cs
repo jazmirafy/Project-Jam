@@ -29,6 +29,13 @@ public class Note : MonoBehaviour
             // vector3.up * y converts a y-value into a Vector3 in the vertical direction (0,1,0) (reminds me when we have ijk in linear algebra is the basis j vector)
             transform.localPosition = Vector3.Lerp(Vector3.up * SongManager.Instance.noteSpawnY, Vector3.up * SongManager.Instance.noteDespawnY, t); 
             GetComponent<SpriteRenderer>().enabled = true;
+
+            //
+            if (!Lane.onAttackPhase && gameObject.tag != "damageNote")
+            {
+                Vector3 currentScale = transform.localScale;
+                transform.localScale = new Vector3(currentScale.x, -Mathf.Abs(currentScale.y), currentScale.z);
+            }
         }
     }
 }
