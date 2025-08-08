@@ -15,7 +15,7 @@ public class GameManager : MonoBehaviour
     private float totalNotes, normalHits, goodHits, perfectHits, missedHits;
     public float healAmount, damageAmount;
     public GameObject resultsScreen;
-    private Text percentHitText, normalText, goodText, perfectText, missedText, rankText, finalScoreText;
+    public Text percentHitText, normalText, goodText, perfectText, missedText, rankText, finalScoreText;
     private int currentMultiplier, multiplierTracker; //tracks your in a row hit streak
     public int[] multiplierThresholds; //the threshold of of in a row hits u need to level up your multiplyer
     public Text scoreText, multiplierText;

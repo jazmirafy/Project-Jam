@@ -2791,11 +2791,23 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 0
+  m_Interactable: 1
   m_TargetGraphic: {fileID: 495655003}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1972412058}
+        m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
+        m_MethodName: OnRestartPress
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &495655003
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5479,9 +5491,16 @@ MonoBehaviour:
   scorePerNote: 100
   scorePerGoodNote: 125
   scorePerPerfectNote: 150
-  healAmount: 0.5
-  damageAmount: 5
+  healAmount: 8
+  damageAmount: 8
   resultsScreen: {fileID: 846047953}
+  percentHitText: {fileID: 2101821062}
+  normalText: {fileID: 2094783505}
+  goodText: {fileID: 86286478}
+  perfectText: {fileID: 1507909073}
+  missedText: {fileID: 1585508517}
+  rankText: {fileID: 2008363882}
+  finalScoreText: {fileID: 788836336}
   multiplierThresholds: 040000000800000010000000
   scoreText: {fileID: 934499573}
   multiplierText: {fileID: 178196414}
