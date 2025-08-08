@@ -12,6 +12,7 @@ public class HealthManager : MonoBehaviour
     public float robotHealthAmount = 100f;
 
     public UIManager UIManager;
+    public Greyscaler Greyscaler;
     // Start is called before the first frame update
     void Start()
     {
@@ -37,6 +38,9 @@ public class HealthManager : MonoBehaviour
             UIManager.onGameOver();
         }
         Debug.Log("player took damage. new health:" + playerHealthAmount);
+
+        //desaturate screen
+        Greyscaler.subtractColor();
     }
     public void PlayerHeal(float healAmount)
     {
@@ -49,6 +53,9 @@ public class HealthManager : MonoBehaviour
             playerHealthBar.fillAmount = playerHealthAmount / 100f;
         }
         Debug.Log("player healed. new health:" + playerHealthAmount);
+
+        //add more color to the screen
+        Greyscaler.addColor();
     }
     public void RobotTakeDamage(float damage)
     {
