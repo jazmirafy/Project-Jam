@@ -18,6 +18,8 @@ public class UIManager : MonoBehaviour
 
     public GameObject gameOverImage;
 
+    public GameObject tutorialImage;
+
     //public List<GameObject> popUpList;
     //private GameObject currentPopUp;
     //private float timer = 0;
@@ -28,8 +30,12 @@ public class UIManager : MonoBehaviour
     public KeyCode inputForPauseButton;
     int counter = 0;
 
-    public bool isPaused = false;
+    public bool isPaused = true;
 
+    private void Start()
+    {
+        PauseGame();
+    }
 
 
     // BUTTONS!!
@@ -207,18 +213,19 @@ public class UIManager : MonoBehaviour
 
     //pausing and resuming game
 
-    void PauseGame()
+    public void PauseGame()
     {
         Time.timeScale = 0f; // stop game time
         AudioListener.pause = true; // stop audio
         isPaused = true;
     }
 
-    void ResumeGame()
+    public void ResumeGame()
     {
         Time.timeScale = 1f; // continue game time
         AudioListener.pause = false; // resume audio
         isPaused = false;
+        tutorialImage.SetActive(false);
     }
 
 }
