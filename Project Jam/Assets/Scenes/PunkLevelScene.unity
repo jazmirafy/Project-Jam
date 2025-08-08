@@ -4795,7 +4795,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 0
+  m_Interactable: 1
   m_TargetGraphic: {fileID: 594339978}
   m_OnClick:
     m_PersistentCalls:
@@ -10204,7 +10204,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   volume: {fileID: 1335897592}
-  colorChangeAmount: 100
+  colorChangeAmount: 20
 --- !u!114 &1335897592
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15248,7 +15248,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   volume: {fileID: 1335897592}
-  colorChangeAmount: 5
+  colorChangeAmount: 20
 --- !u!4 &1830170054
 Transform:
   m_ObjectHideFlags: 0
