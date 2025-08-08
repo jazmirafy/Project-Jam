@@ -24,6 +24,7 @@ public class ButtonController : MonoBehaviour
         if (Input.GetKeyDown(keyToPress))
         {
             buttonSR.sprite = pressedImage;
+            Debug.Log("time scale =" + Time.timeScale);
         }
         if (Input.GetKeyUp(keyToPress))
         {

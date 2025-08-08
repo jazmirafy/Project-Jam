@@ -40,6 +40,7 @@ public class SongManager : MonoBehaviour
     void Start()
     {
 
+        Time.timeScale = 1f; //put time back to normal speed
         Instance = this;
 
         if (Application.streamingAssetsPath.StartsWith("http://") || Application.streamingAssetsPath.StartsWith("https://"))
@@ -99,7 +100,7 @@ public class SongManager : MonoBehaviour
 
         foreach (var lane in lanes)
         {
-            lane.SetTimeStamps(array); // this method will live in your Lane.cs
+            lane.SetTimeStamps(array); 
         }
 
         Invoke(nameof(StartSong), songDelayInSeconds);

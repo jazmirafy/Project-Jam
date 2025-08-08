@@ -72,7 +72,10 @@ public class UIManager : MonoBehaviour
     //Main Menu Buttons
     public void OnRestartPress()
     {
+        ResumeGame(); // put the audio listener back on and sets time back to the normal scale
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        Debug.Log("time scale =" + Time.timeScale);
+        
     }
 
     public void OnGameLevelSelectPress()
@@ -82,6 +85,7 @@ public class UIManager : MonoBehaviour
 
     public void OnGameQuitPress()
     {
+        ResumeGame(); // puts audio listener back on and puts time back at the normal scale
         SceneManager.LoadScene("MenuScene");
     }
     public void QuitGame()
