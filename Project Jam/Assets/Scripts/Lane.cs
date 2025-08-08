@@ -31,6 +31,21 @@ public class Lane : MonoBehaviour
     public GameObject attackBackground;
     public GameObject defendBackground;
 
+    public float popUpLength;
+
+    public float effectXpos;
+    public float effectYpos;
+
+    //public static bool needsRotation 
+    //{
+        //get 
+        //{
+        
+        
+        //}
+        
+    //}
+
 
     // Start is called before the first frame update
     void Start()
@@ -75,6 +90,8 @@ public class Lane : MonoBehaviour
                 note.GetComponent<Note>().assignedTime = (float)timeStamps[spawnIndex];
                 spawnIndex++;
             }
+
+
         }
         
 
@@ -133,7 +150,7 @@ public class Lane : MonoBehaviour
                     Debug.Log("Perfect");
                     GameManager.instance.PerfectHit();
                     SoundManager.PlaySound(SoundType.PerfectNote, .4f);
-                    Instantiate(perfectEffect, button.transform.position, perfectEffect.transform.rotation);
+                    Instantiate(perfectEffect, new Vector3(effectXpos, effectYpos, button.transform.position.z), perfectEffect.transform.rotation);
                     print($"Hit on {inputIndex} note");
                     Destroy(notes[inputIndex].gameObject);
                     inputIndex++;
@@ -145,7 +162,7 @@ public class Lane : MonoBehaviour
                     Debug.Log("Good");
                     GameManager.instance.GoodHit();
                     SoundManager.PlaySound(SoundType.HitNote, .4f);
-                    Instantiate(goodEffect, button.transform.position, goodEffect.transform.rotation);
+                    Instantiate(goodEffect, new Vector3(effectXpos, effectYpos, button.transform.position.z), goodEffect.transform.rotation);
                     Destroy(notes[inputIndex].gameObject);
                     inputIndex++;
 
@@ -156,7 +173,7 @@ public class Lane : MonoBehaviour
                     Debug.Log("Normal");
                     GameManager.instance.NormalHit();
                     SoundManager.PlaySound(SoundType.HitNote, .4f);
-                    Instantiate(hitEffect, button.transform.position, hitEffect.transform.rotation);
+                    Instantiate(hitEffect, new Vector3(effectXpos, effectYpos, button.transform.position.z), hitEffect.transform.rotation);
                     print($"Hit inaccurate on {inputIndex} note with {Math.Abs(audioTime - timeStamp)} delay");
                     Destroy(notes[inputIndex].gameObject);
                     inputIndex++;
@@ -174,7 +191,7 @@ public class Lane : MonoBehaviour
             {
                 GameManager.instance.NoteMissed();
                 SoundManager.PlaySound(SoundType.MissNote, .4f);
-                Instantiate(missEffect, button.transform.position, missEffect.transform.rotation);
+                Instantiate(missEffect, new Vector3(effectXpos, effectYpos, button.transform.position.z), missEffect.transform.rotation);
                 playerController.missAnimation();
                 print($"Missed {inputIndex} note");
                 inputIndex++;
@@ -191,14 +208,14 @@ public class Lane : MonoBehaviour
                     Debug.Log("Perfect");
                     GameManager.instance.PerfectHit();
                     SoundManager.PlaySound(SoundType.PerfectNote, .4f);
-                    Instantiate(perfectEffect, button.transform.position, perfectEffect.transform.rotation);
+                    Instantiate(perfectEffect, new Vector3(effectXpos, effectYpos, button.transform.position.z), perfectEffect.transform.rotation);
                     print($"Hit on {inputIndex} note");
                     inputIndex++;
                 }
                 else
                 {
                     GameManager.instance.NoteMissed();
-                    Instantiate(missEffect, button.transform.position, missEffect.transform.rotation);
+                    Instantiate(missEffect, new Vector3(effectXpos, effectYpos, button.transform.position.z), missEffect.transform.rotation);
                     SoundManager.PlaySound(SoundType.MissNote, .4f);
                     playerController.missAnimation();
                     print($"Missed {inputIndex} note");
@@ -215,7 +232,7 @@ public class Lane : MonoBehaviour
         public void TransitionToAttack()
     {
         //UI transition pop up
-        StartCoroutine(UIManager.ShowPopUp(attackImage, 3f));
+        StartCoroutine(UIManager.ShowPopUp(attackImage, popUpLength));
         //UI transition background
         UIManager.ShowNewBackground(attackBackground, defendBackground);
         ///switch note tap and note spawn values
@@ -239,7 +256,7 @@ public class Lane : MonoBehaviour
     public void TransitionToDefend()
     {
         //UI transition pop up
-        StartCoroutine(UIManager.ShowPopUp(defendImage, 3f));
+        StartCoroutine(UIManager.ShowPopUp(defendImage, popUpLength));
         //UI transition background
         UIManager.ShowNewBackground(defendBackground, attackBackground);
 
