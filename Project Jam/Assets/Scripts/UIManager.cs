@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UIElements;
 using UnityEngine.UI;
 using UnityEngine.Windows;
+using JetBrains.Annotations;
 
 public class UIManager : MonoBehaviour
 {
@@ -86,7 +87,18 @@ public class UIManager : MonoBehaviour
 
     public void OnGameLevelSelectPress()
     {
+        bringToLevelSelect(levelSelectUI, startScreenUI, 5f);
+        SceneManager.LoadScene("MenuScene");
 
+    }
+
+    public IEnumerator bringToLevelSelect(GameObject canvasOn, GameObject canvasOff, float waitLength)
+    { 
+        
+        yield return new WaitForSeconds(waitLength);
+        canvasOn.gameObject.SetActive(true);
+        canvasOff.gameObject.SetActive(false); 
+        
     }
 
     public void OnGameQuitPress()
