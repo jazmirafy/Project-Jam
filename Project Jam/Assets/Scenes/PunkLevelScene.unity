@@ -245,6 +245,8 @@ MonoBehaviour:
   defaultImage: {fileID: 21300000, guid: 8da9efbfb4ea45c4e8a7541140104145, type: 3}
   pressedImage: {fileID: 21300000, guid: 083f6139d8eb42944b0f75f960ce3df8, type: 3}
   keyToPress: 334
+  useAxis: 0
+  axisName: 
 --- !u!212 &7163495
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3685,7 +3687,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   defaultImage: {fileID: 21300000, guid: a4c02f925a9fba3448a9bd0f08047409, type: 3}
   pressedImage: {fileID: 21300000, guid: 6f9943afd26408e42ab8261e74c239f0, type: 3}
-  keyToPress: 338
+  keyToPress: 0
+  useAxis: 1
+  axisName: LeftTrigger
 --- !u!212 &502898468
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -8610,7 +8614,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   defaultImage: {fileID: 21300000, guid: b690e24e57f577047b9c4d5e571ef175, type: 3}
   pressedImage: {fileID: 21300000, guid: beec7642118abe64dba3dad0e2203867, type: 3}
-  keyToPress: 331
+  keyToPress: 0
+  useAxis: 1
+  axisName: RightTrigger
 --- !u!212 &1143967788
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -9836,6 +9842,8 @@ MonoBehaviour:
   defaultImage: {fileID: 21300000, guid: efec1f302ba142948a6b1980dc7394fa, type: 3}
   pressedImage: {fileID: 21300000, guid: 8365eed9225fc8d4f919b3c9c929f873, type: 3}
   keyToPress: 106
+  useAxis: 0
+  axisName: 
 --- !u!212 &1312830140
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -12479,6 +12487,8 @@ MonoBehaviour:
   defaultImage: {fileID: 21300000, guid: 13dbb9366d727df4ba457d9aabbc9bfa, type: 3}
   pressedImage: {fileID: 21300000, guid: ffc18ec2ba5f59e469e1e2b638ecc9b7, type: 3}
   keyToPress: 335
+  useAxis: 0
+  axisName: 
 --- !u!212 &1557492773
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -13606,6 +13616,8 @@ MonoBehaviour:
   defaultImage: {fileID: 21300000, guid: 2c9b4866ac3ed6e4f87c8cb3324708e5, type: 3}
   pressedImage: {fileID: 21300000, guid: dccf9b2e9465e774ab0c2bd392cada41, type: 3}
   keyToPress: 102
+  useAxis: 0
+  axisName: 
 --- !u!212 &1684641952
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -14214,6 +14226,8 @@ MonoBehaviour:
   defaultImage: {fileID: 21300000, guid: cb7d32326322b8d499c260daf3a61d19, type: 3}
   pressedImage: {fileID: 21300000, guid: 73e4e5ada47740d458a2f813b0c8e82e, type: 3}
   keyToPress: 107
+  useAxis: 0
+  axisName: 
 --- !u!212 &1734076341
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -15520,6 +15534,8 @@ MonoBehaviour:
   defaultImage: {fileID: 21300000, guid: 3a0a81e408594ea4c928c4c5e4b7bb96, type: 3}
   pressedImage: {fileID: 21300000, guid: 33e15d304b0d0de40a31d16753c4ced1, type: 3}
   keyToPress: 100
+  useAxis: 0
+  axisName: 
 --- !u!212 &1878539847
 SpriteRenderer:
   m_ObjectHideFlags: 0
