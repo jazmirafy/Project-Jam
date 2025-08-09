@@ -150,16 +150,7 @@ public class Lane : MonoBehaviour
                     Debug.Log("Perfect");
                     GameManager.instance.PerfectHit();
                     SoundManager.PlaySound(SoundType.PerfectNote, .4f);
-
-                    //Moving the GOOD/PERFECT/ETC effects to the right spot for the proper phase
-                    if (!onAttackPhase)
-                    {
-                        Instantiate(perfectEffect, new Vector3(effectXpos, effectYpos + 6, button.transform.position.z), perfectEffect.transform.rotation);
-                    }
-                    else { 
-                        Instantiate(perfectEffect, new Vector3(effectXpos, effectYpos, button.transform.position.z), perfectEffect.transform.rotation); 
-                    }
-                    
+                    Instantiate(perfectEffect, new Vector3(effectXpos, effectYpos, button.transform.position.z), perfectEffect.transform.rotation);
                     print($"Hit on {inputIndex} note");
                     Destroy(notes[inputIndex].gameObject);
                     inputIndex++;
@@ -171,15 +162,7 @@ public class Lane : MonoBehaviour
                     Debug.Log("Good");
                     GameManager.instance.GoodHit();
                     SoundManager.PlaySound(SoundType.HitNote, .4f);
-
-                    if (!onAttackPhase)
-                    {
-                        Instantiate(goodEffect, new Vector3(effectXpos, effectYpos + 6, button.transform.position.z), goodEffect.transform.rotation);
-                    }
-                    else
-                    {
-                        Instantiate(goodEffect, new Vector3(effectXpos, effectYpos, button.transform.position.z), goodEffect.transform.rotation);
-                    }
+                    Instantiate(goodEffect, new Vector3(effectXpos, effectYpos, button.transform.position.z), goodEffect.transform.rotation);
                     Destroy(notes[inputIndex].gameObject);
                     inputIndex++;
 
@@ -190,14 +173,7 @@ public class Lane : MonoBehaviour
                     Debug.Log("Normal");
                     GameManager.instance.NormalHit();
                     SoundManager.PlaySound(SoundType.HitNote, .4f);
-                    if (!onAttackPhase)
-                    {
-                        Instantiate(hitEffect, new Vector3(effectXpos, effectYpos + 6, button.transform.position.z), hitEffect.transform.rotation);
-                    }
-                    else
-                    {
-                        Instantiate(hitEffect, new Vector3(effectXpos, effectYpos, button.transform.position.z), hitEffect.transform.rotation);
-                    }
+                    Instantiate(hitEffect, new Vector3(effectXpos, effectYpos, button.transform.position.z), hitEffect.transform.rotation);
                     print($"Hit inaccurate on {inputIndex} note with {Math.Abs(audioTime - timeStamp)} delay");
                     Destroy(notes[inputIndex].gameObject);
                     inputIndex++;
@@ -215,16 +191,7 @@ public class Lane : MonoBehaviour
             {
                 GameManager.instance.NoteMissed();
                 SoundManager.PlaySound(SoundType.MissNote, .4f);
-
-                if (!onAttackPhase)
-                {
-                    Instantiate(missEffect, new Vector3(effectXpos, effectYpos + 6, button.transform.position.z), missEffect.transform.rotation);
-                }
-                else
-                {
-                    Instantiate(missEffect, new Vector3(effectXpos, effectYpos, button.transform.position.z), missEffect.transform.rotation);
-                }
-                
+                Instantiate(missEffect, new Vector3(effectXpos, effectYpos, button.transform.position.z), missEffect.transform.rotation);
                 playerController.missAnimation();
                 print($"Missed {inputIndex} note");
                 inputIndex++;
@@ -241,23 +208,14 @@ public class Lane : MonoBehaviour
                     Debug.Log("Perfect");
                     GameManager.instance.PerfectHit();
                     SoundManager.PlaySound(SoundType.PerfectNote, .4f);
-                    Instantiate(perfectEffect, new Vector3(effectXpos, effectYpos + 6, button.transform.position.z), perfectEffect.transform.rotation);
+                    Instantiate(perfectEffect, new Vector3(effectXpos, effectYpos, button.transform.position.z), perfectEffect.transform.rotation);
                     print($"Hit on {inputIndex} note");
                     inputIndex++;
                 }
                 else
                 {
                     GameManager.instance.NoteMissed();
-
-                    if (!onAttackPhase)
-                    {
-                        Instantiate(missEffect, new Vector3(effectXpos, effectYpos + 6, button.transform.position.z), missEffect.transform.rotation);
-                    }
-
-                    else
-                    {
-                        Instantiate(missEffect, new Vector3(effectXpos, effectYpos, button.transform.position.z), missEffect.transform.rotation);
-                    }
+                    Instantiate(missEffect, new Vector3(effectXpos, effectYpos, button.transform.position.z), missEffect.transform.rotation);
                     SoundManager.PlaySound(SoundType.MissNote, .4f);
                     playerController.missAnimation();
                     print($"Missed {inputIndex} note");

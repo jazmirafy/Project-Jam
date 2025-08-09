@@ -43,7 +43,7 @@ public class Greyscaler : MonoBehaviour
 
     public void addColor()
     {
-        if (colorAdjustments.saturation.value < 0)
+        if (colorAdjustments.saturation.value <= 0)
         {
             colorAdjustments.saturation.value += colorChangeAmount;
         }
