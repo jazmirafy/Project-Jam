@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UIElements;
 using UnityEngine.UI;
 using UnityEngine.Windows;
+using JetBrains.Annotations;
 
 public class UIManager : MonoBehaviour
 {
@@ -86,6 +87,8 @@ public class UIManager : MonoBehaviour
 
     public void OnGameLevelSelectPress()
     {
+
+        SceneManager.LoadScene("MenuScene");
 
     }
 
