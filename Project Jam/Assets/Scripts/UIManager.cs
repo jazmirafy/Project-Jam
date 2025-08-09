@@ -87,18 +87,9 @@ public class UIManager : MonoBehaviour
 
     public void OnGameLevelSelectPress()
     {
-        bringToLevelSelect(levelSelectUI, startScreenUI, 5f);
+
         SceneManager.LoadScene("MenuScene");
 
-    }
-
-    public IEnumerator bringToLevelSelect(GameObject canvasOn, GameObject canvasOff, float waitLength)
-    { 
-        
-        yield return new WaitForSeconds(waitLength);
-        canvasOn.gameObject.SetActive(true);
-        canvasOff.gameObject.SetActive(false); 
-        
     }
 
     public void OnGameQuitPress()
