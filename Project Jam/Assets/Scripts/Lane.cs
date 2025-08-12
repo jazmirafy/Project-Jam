@@ -207,8 +207,13 @@ public class Lane : MonoBehaviour
                 {
                     Debug.Log("Perfect");
                     GameManager.instance.PerfectHit();
+<<<<<<< HEAD
                     SoundManager.PlaySound(SoundType.PerfectNote, .4f);
                     Instantiate(perfectEffect, new Vector3(effectXpos, effectYpos, button.transform.position.z), perfectEffect.transform.rotation);
+=======
+                    
+                    Instantiate(perfectEffect, new Vector3(effectXpos, effectYpos + 6, button.transform.position.z), perfectEffect.transform.rotation);
+>>>>>>> master
                     print($"Hit on {inputIndex} note");
                     inputIndex++;
                 }
@@ -241,8 +246,9 @@ public class Lane : MonoBehaviour
         SongManager.Instance.noteTapY = SongManager.Instance.attackNoteTapY;
         
         /// change the position to the buttons to the note tap value
-       GameManager.instance.tapButtons.transform.position = new Vector3(GameManager.instance.tapButtons.transform.position.x, SongManager.Instance.noteTapY, GameManager.instance.tapButtons.transform.position.z);
-       // GameManager.instance.onAttackPhase = true; // this will trigger the change in note drirections
+        GameManager.instance.controllerTapButtons.transform.position = new Vector3(GameManager.instance.controllerTapButtons.transform.position.x, SongManager.Instance.noteTapY, GameManager.instance.controllerTapButtons.transform.position.z);
+       GameManager.instance.keyboardTapButtons.transform.position = new Vector3(GameManager.instance.keyboardTapButtons.transform.position.x, SongManager.Instance.noteTapY, GameManager.instance.keyboardTapButtons.transform.position.z);
+        // GameManager.instance.onAttackPhase = true; // this will trigger the change in note drirections
         GameManager.instance.transitionIndex += 1;//go to the next transition time
         Debug.Log("we incremente the transition index by caling transition to attack" + GameManager.instance);
         //note to future self: put a check before u do this so transition index doesnt go out of bounds
@@ -266,7 +272,8 @@ public class Lane : MonoBehaviour
         SongManager.Instance.noteTapY = SongManager.Instance.defendNoteTapY;
         
         /// change the y position of the buttons to the new note tap value 
-        GameManager.instance.tapButtons.transform.position = new Vector3(GameManager.instance.tapButtons.transform.position.x, SongManager.Instance.noteTapY, GameManager.instance.tapButtons.transform.position.z);
+        GameManager.instance.controllerTapButtons.transform.position = new Vector3(GameManager.instance.controllerTapButtons.transform.position.x, SongManager.Instance.noteTapY, GameManager.instance.controllerTapButtons.transform.position.z);
+       GameManager.instance.keyboardTapButtons.transform.position = new Vector3(GameManager.instance.keyboardTapButtons.transform.position.x, SongManager.Instance.noteTapY, GameManager.instance.keyboardTapButtons.transform.position.z);
         //GameManager.instance.onAttackPhase = false; //this will trigger the change in note direction
         GameManager.instance.transitionIndex += 1; //go to the next transition time
         //this makes sure we dont go out of bounds

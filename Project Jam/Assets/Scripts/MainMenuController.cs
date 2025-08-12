@@ -7,7 +7,9 @@ public class MainMenuController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+
         Time.timeScale = 1f; //put time back to normal speed
+        AudioListener.pause = false;
         SoundManager.PlayBackgroundMusic(SoundManager.instance.mainMenuMusic, true);
     }
 

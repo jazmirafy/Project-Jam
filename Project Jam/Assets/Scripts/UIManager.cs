@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UIElements;
 using UnityEngine.UI;
 using UnityEngine.Windows;
+using JetBrains.Annotations;
 
 public class UIManager : MonoBehaviour
 {
@@ -81,11 +82,13 @@ public class UIManager : MonoBehaviour
         ResumeGame(); // put the audio listener back on and sets time back to the normal scale
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         Debug.Log("time scale =" + Time.timeScale);
-        
+
     }
 
     public void OnGameLevelSelectPress()
     {
+
+        SceneManager.LoadScene("MenuScene");
 
     }
 
@@ -227,5 +230,21 @@ public class UIManager : MonoBehaviour
         isPaused = false;
         tutorialImage.SetActive(false);
     }
+
+    //if they click lets jam on controller, show the controller tap buttons
+    public void ControllerLetsJam()
+    {
+        GameManager.instance.controllerTapButtons.SetActive(true);
+        GameManager.instance.keyboardTapButtons.SetActive(false);
+        ResumeGame();
+    }
+    //if they click lets jam on keyboard, show the keyboard tap buttons
+    public void KeyboardLetsJam()
+    {
+        GameManager.instance.controllerTapButtons.SetActive(false);
+        GameManager.instance.keyboardTapButtons.SetActive(true);
+        ResumeGame();
+    }
+
 
 }

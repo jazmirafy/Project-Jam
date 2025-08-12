@@ -49,3 +49,6 @@ TagManager:
   - name: Effect
     uniqueID: 1317297387
     locked: 0
+  - name: MainMenuButtons
+    uniqueID: 1739339605
+    locked: 0
