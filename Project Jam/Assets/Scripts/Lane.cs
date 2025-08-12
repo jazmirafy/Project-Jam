@@ -207,13 +207,8 @@ public class Lane : MonoBehaviour
                 {
                     Debug.Log("Perfect");
                     GameManager.instance.PerfectHit();
-<<<<<<< HEAD
-                    SoundManager.PlaySound(SoundType.PerfectNote, .4f);
-                    Instantiate(perfectEffect, new Vector3(effectXpos, effectYpos, button.transform.position.z), perfectEffect.transform.rotation);
-=======
                     
                     Instantiate(perfectEffect, new Vector3(effectXpos, effectYpos + 6, button.transform.position.z), perfectEffect.transform.rotation);
->>>>>>> master
                     print($"Hit on {inputIndex} note");
                     inputIndex++;
                 }
