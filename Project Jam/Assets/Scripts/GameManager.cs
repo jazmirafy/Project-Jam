@@ -33,7 +33,8 @@ public class GameManager : MonoBehaviour
 
     public float currentTransitionTime; //the current time we are looking for a transition at
     public int transitionIndex; //the transition index we are currently at
-    public GameObject tapButtons;
+    public GameObject controllerTapButtons;
+    public GameObject keyboardTapButtons;
     public UIManager UIManager;
     public bool gameEnded = false;
     
