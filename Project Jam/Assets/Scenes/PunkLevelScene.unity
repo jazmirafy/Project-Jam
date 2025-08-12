@@ -1091,7 +1091,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &147693543
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2631,6 +2631,7 @@ GameObject:
   m_Component:
   - component: {fileID: 302914736}
   - component: {fileID: 302914737}
+  - component: {fileID: 302914738}
   m_Layer: 5
   m_Name: Start - A
   m_TagString: Untagged
@@ -2675,6 +2676,62 @@ MonoBehaviour:
   defaultImage: {fileID: 1109629038}
   pressedImage: {fileID: 2116831076}
   keyToPress: 330
+--- !u!114 &302914738
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 302914735}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 3
+    m_WrapAround: 0
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_SelectedTrigger: Selected
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 0}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1972412058}
+        m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
+        m_MethodName: ControllerLetsJam
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &313669171
 GameObject:
   m_ObjectHideFlags: 0
@@ -3673,7 +3730,7 @@ MonoBehaviour:
   healNote: 6
   damageNote: 10
   keyboardInput: 107
-  controllerInput: 337
+  controllerInput: 331
   playerController: {fileID: 366721572}
   robotController: {fileID: 1184334790}
   UIManager: {fileID: 1972412058}
@@ -4759,7 +4816,7 @@ MonoBehaviour:
   healNote: 6
   damageNote: 10
   keyboardInput: 100
-  controllerInput: 336
+  controllerInput: 332
   playerController: {fileID: 366721572}
   robotController: {fileID: 1184334790}
   UIManager: {fileID: 1972412058}
@@ -6775,7 +6832,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1972412058}
         m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
-        m_MethodName: ResumeGame
+        m_MethodName: KeyboardLetsJam
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -8047,7 +8104,8 @@ MonoBehaviour:
   gameEndTime: 158
   currentTransitionTime: 10
   transitionIndex: 0
-  tapButtons: {fileID: 1662845172}
+  controllerTapButtons: {fileID: 2043451560}
+  keyboardTapButtons: {fileID: 1662845172}
   UIManager: {fileID: 1972412058}
   gameEnded: 0
 --- !u!4 &875004282
@@ -8253,7 +8311,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76c392e42b5098c458856cdf6ecaaaa1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_FirstSelected: {fileID: 0}
+  m_FirstSelected: {fileID: 302914735}
   m_sendNavigationEvents: 1
   m_DragThreshold: 10
 --- !u!4 &898808286
@@ -8722,7 +8780,7 @@ MonoBehaviour:
   healNote: 6
   damageNote: 10
   keyboardInput: 106
-  controllerInput: 335
+  controllerInput: 333
   playerController: {fileID: 366721572}
   robotController: {fileID: 1184334790}
   UIManager: {fileID: 1972412058}
@@ -9394,7 +9452,7 @@ MonoBehaviour:
   healNote: 6
   damageNote: 10
   keyboardInput: 100
-  controllerInput: 336
+  controllerInput: 332
   playerController: {fileID: 366721572}
   robotController: {fileID: 1184334790}
   UIManager: {fileID: 1972412058}
@@ -10430,7 +10488,7 @@ MonoBehaviour:
   healNote: 6
   damageNote: 10
   keyboardInput: 102
-  controllerInput: 334
+  controllerInput: 330
   playerController: {fileID: 366721572}
   robotController: {fileID: 1184334790}
   UIManager: {fileID: 1972412058}
@@ -11165,7 +11223,7 @@ MonoBehaviour:
   healNote: 6
   damageNote: 10
   keyboardInput: 107
-  controllerInput: 337
+  controllerInput: 331
   playerController: {fileID: 366721572}
   robotController: {fileID: 1184334790}
   UIManager: {fileID: 1972412058}
@@ -15224,7 +15282,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1662845173
 Transform:
   m_ObjectHideFlags: 0
@@ -18571,6 +18629,18 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+        - m_Target: {fileID: 2043451561}
+          m_TargetAssemblyTypeName: PulseToTheBeat, Assembly-CSharp
+          m_MethodName: Pulse
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
   - steps: 0.5
     trigger:
       m_PersistentCalls:
@@ -19083,7 +19153,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &2043451561
 MonoBehaviour:
   m_ObjectHideFlags: 0
