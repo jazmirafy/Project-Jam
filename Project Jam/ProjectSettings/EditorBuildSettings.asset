@@ -14,7 +14,7 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/HipHopLevelScene.unity
     guid: 187d9357f76f65e499ebec5eadab12f9
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/JazzLevelScene.unity
     guid: 4a6879a639a4c5848b24509806038f6e
   - enabled: 1

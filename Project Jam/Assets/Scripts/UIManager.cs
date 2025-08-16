@@ -14,6 +14,9 @@ public class UIManager : MonoBehaviour
     public GameObject startScreenUI;
     public GameObject levelSelectUI;
 
+    public GameObject startEventSystem;
+    public GameObject levelselectEventSystem;
+
     public GameObject startHoverImage;
     public GameObject quitHoverImage;
 
@@ -105,13 +108,17 @@ public class UIManager : MonoBehaviour
     public void OnGameStartPress()
     {
         startScreenUI.SetActive(false);
+        startEventSystem.SetActive(false);
         levelSelectUI.SetActive(true);
+        levelselectEventSystem.SetActive(true);
     }
 
     public void OnLevelSelectBackPress()
     {
         startScreenUI.SetActive(true);
+        startEventSystem.SetActive(true);
         levelSelectUI.SetActive(false);
+        levelselectEventSystem.SetActive(false);
     }
 
     public void BringtoHipHop()
