@@ -7,6 +7,8 @@ using UnityEngine.UIElements;
 using UnityEngine.UI;
 using UnityEngine.Windows;
 using JetBrains.Annotations;
+using Unity.VisualScripting;
+using UnityEngine.InputSystem;
 
 public class UIManager : MonoBehaviour
 {
@@ -24,6 +26,7 @@ public class UIManager : MonoBehaviour
 
     public GameObject tutorialImage;
 
+
     //public List<GameObject> popUpList;
     //private GameObject currentPopUp;
     //private float timer = 0;
@@ -32,12 +35,27 @@ public class UIManager : MonoBehaviour
 
 
     public KeyCode inputForPauseButton;
-    int counter = 0;
+    public int counter = 0;
 
     public bool isPaused = true;
 
+    public GameObject tutorialEventSystem;
+    public GameObject pauseEventSystem;
+    public GameObject gameOverEventSystem;
+    public GameObject resultsEventSystem;
+    public GameObject gameplayEventSystem;
+
+    public GameObject pauseButtonController;
+
+    public bool canPause = false;
+
     private void Start()
     {
+        gameOverEventSystem.SetActive(false);
+        tutorialImage.SetActive(true);
+        tutorialEventSystem.SetActive(true);
+        canPause = false;
+        //pauseButtonController.SetActive(false);
         PauseGame();
     }
 
@@ -48,7 +66,7 @@ public class UIManager : MonoBehaviour
     //pause button UI
     private void Update()
     {
-        if (UnityEngine.Input.GetKeyDown(inputForPauseButton))
+        if (UnityEngine.Input.GetKeyDown(inputForPauseButton) && canPause)
         {
             counter++;
             if (counter % 2 == 0)
@@ -56,12 +74,16 @@ public class UIManager : MonoBehaviour
                 isPaused = false;
                 OnGamePause(isPaused);
                 pauseUI.SetActive(false);
+                pauseEventSystem.SetActive(false);
+                gameplayEventSystem.SetActive(true);
             }
             else
             {
                 isPaused = true;
                 OnGamePause(isPaused);
+                gameplayEventSystem.SetActive(false);
                 pauseUI.SetActive(true);
+                pauseEventSystem.SetActive(true);
             }
         }
     }
@@ -87,18 +109,11 @@ public class UIManager : MonoBehaviour
         Debug.Log("time scale =" + Time.timeScale);
 
     }
-
-    public void OnGameLevelSelectPress()
-    {
-
-        SceneManager.LoadScene("MenuScene");
-
-    }
-
     public void OnGameQuitPress()
     {
         ResumeGame(); // puts audio listener back on and puts time back at the normal scale
         SceneManager.LoadScene("MenuScene");
+        //Debug.Log("time scale =" + Time.timeScale);
     }
     public void QuitGame()
     {
@@ -217,7 +232,11 @@ public class UIManager : MonoBehaviour
     public void onGameOver()
     {
         PauseGame();
+        canPause = false;
+        pauseButtonController.SetActive(false);
+        gameplayEventSystem.SetActive(false);
         gameOverImage.SetActive(true);
+        gameOverEventSystem.SetActive(true);
     }
 
 
@@ -228,6 +247,7 @@ public class UIManager : MonoBehaviour
         Time.timeScale = 0f; // stop game time
         AudioListener.pause = true; // stop audio
         isPaused = true;
+        Debug.Log("time scale =" + Time.timeScale);
     }
 
     public void ResumeGame()
@@ -235,7 +255,7 @@ public class UIManager : MonoBehaviour
         Time.timeScale = 1f; // continue game time
         AudioListener.pause = false; // resume audio
         isPaused = false;
-        tutorialImage.SetActive(false);
+        Debug.Log("time scale =" + Time.timeScale);
     }
 
     //if they click lets jam on controller, show the controller tap buttons
@@ -243,6 +263,11 @@ public class UIManager : MonoBehaviour
     {
         GameManager.instance.controllerTapButtons.SetActive(true);
         GameManager.instance.keyboardTapButtons.SetActive(false);
+        tutorialEventSystem.SetActive(false);
+        tutorialImage.SetActive(false);
+        gameplayEventSystem.SetActive(true);
+        canPause = true;
+        pauseButtonController.SetActive(true);
         ResumeGame();
     }
     //if they click lets jam on keyboard, show the keyboard tap buttons
@@ -250,6 +275,11 @@ public class UIManager : MonoBehaviour
     {
         GameManager.instance.controllerTapButtons.SetActive(false);
         GameManager.instance.keyboardTapButtons.SetActive(true);
+        tutorialEventSystem.SetActive(false);
+        tutorialImage.SetActive(false);
+        gameplayEventSystem.SetActive(true);
+        canPause = true;
+        pauseButtonController.SetActive(true);
         ResumeGame();
     }
 
