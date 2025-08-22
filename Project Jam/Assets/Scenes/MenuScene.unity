@@ -2338,7 +2338,15 @@ MonoBehaviour:
   tutorialImage: {fileID: 0}
   popUpTime: 0
   inputForPauseButton: 0
+  counter: 0
   isPaused: 0
+  tutorialEventSystem: {fileID: 0}
+  pauseEventSystem: {fileID: 0}
+  gameOverEventSystem: {fileID: 0}
+  resultsEventSystem: {fileID: 0}
+  gameplayEventSystem: {fileID: 0}
+  pauseButtonController: {fileID: 0}
+  canPause: 0
 --- !u!4 &658998417
 Transform:
   m_ObjectHideFlags: 0
@@ -7813,11 +7821,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d34887a39cee825418c4d0cc4e4b9013, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mainMenuMusic: {fileID: 8300000, guid: 2410a26c422ff4b9fb0a086c573e9976, type: 3}
+  mainMenuMusic: {fileID: 8300000, guid: 09a9cdd5d3b104335915d902194eb359, type: 3}
   levelMusic: {fileID: 8300000, guid: b554ab9f8876145c8bfb9ed0bcfc4578, type: 3}
-  pauseMusic: {fileID: 8300000, guid: 2410a26c422ff4b9fb0a086c573e9976, type: 3}
-  winScreenMusic: {fileID: 8300000, guid: a53b1fe7b7eef415e96797a6d793ac09, type: 3}
-  loseScreenMusic: {fileID: 8300000, guid: 870c37bc33c334faca4a88ea0471c074, type: 3}
+  pauseMusic: {fileID: 8300000, guid: 09a9cdd5d3b104335915d902194eb359, type: 3}
+  winScreenMusic: {fileID: 8300000, guid: 21bc590876d0d42b3aedbb15cf239c0d, type: 3}
+  loseScreenMusic: {fileID: 8300000, guid: 96f05f8cc1c204722a8233f42339d0db, type: 3}
   musicSource: {fileID: 2022191879}
   soundList:
   - name: Test
