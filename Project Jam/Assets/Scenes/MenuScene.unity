@@ -2338,7 +2338,15 @@ MonoBehaviour:
   tutorialImage: {fileID: 0}
   popUpTime: 0
   inputForPauseButton: 0
+  counter: 0
   isPaused: 0
+  tutorialEventSystem: {fileID: 0}
+  pauseEventSystem: {fileID: 0}
+  gameOverEventSystem: {fileID: 0}
+  resultsEventSystem: {fileID: 0}
+  gameplayEventSystem: {fileID: 0}
+  pauseButtonController: {fileID: 0}
+  canPause: 0
 --- !u!4 &658998417
 Transform:
   m_ObjectHideFlags: 0
@@ -7717,7 +7725,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.914
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -7813,34 +7821,34 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d34887a39cee825418c4d0cc4e4b9013, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mainMenuMusic: {fileID: 8300000, guid: 2410a26c422ff4b9fb0a086c573e9976, type: 3}
+  mainMenuMusic: {fileID: 8300000, guid: 09a9cdd5d3b104335915d902194eb359, type: 3}
   levelMusic: {fileID: 8300000, guid: b554ab9f8876145c8bfb9ed0bcfc4578, type: 3}
-  pauseMusic: {fileID: 8300000, guid: 2410a26c422ff4b9fb0a086c573e9976, type: 3}
-  winScreenMusic: {fileID: 8300000, guid: a53b1fe7b7eef415e96797a6d793ac09, type: 3}
-  loseScreenMusic: {fileID: 8300000, guid: 870c37bc33c334faca4a88ea0471c074, type: 3}
+  pauseMusic: {fileID: 8300000, guid: 09a9cdd5d3b104335915d902194eb359, type: 3}
+  winScreenMusic: {fileID: 8300000, guid: 21bc590876d0d42b3aedbb15cf239c0d, type: 3}
+  loseScreenMusic: {fileID: 8300000, guid: 96f05f8cc1c204722a8233f42339d0db, type: 3}
   musicSource: {fileID: 2022191879}
   soundList:
   - name: Test
     sounds:
-    - {fileID: 0}
+    - {fileID: 8300000, guid: bd01e85179f9e4699a2e7dcf9b8ca689, type: 3}
   - name: PerfectNote
     sounds:
-    - {fileID: 8300000, guid: 830ecb58df6924ba2a1cf00c6df2724c, type: 3}
+    - {fileID: 8300000, guid: 7925a8c72b1d4426d861d2d19f547386, type: 3}
   - name: HitNote
     sounds:
-    - {fileID: 8300000, guid: 680e71ec770ef47e2b06a2437c268ce6, type: 3}
+    - {fileID: 8300000, guid: 2357529ede5734df3a794b9ffef17f2a, type: 3}
   - name: MissNote
     sounds:
-    - {fileID: 8300000, guid: c93a6665e66e2482b9a92d6d6a3416e5, type: 3}
-    - {fileID: 8300000, guid: 7930c36ae443b48cdb788fb739fbd7d2, type: 3}
-    - {fileID: 8300000, guid: 9bbe13284e4734dffae49130f42ddcb6, type: 3}
+    - {fileID: 8300000, guid: aa91d899d42124c569ef55a3abb7505f, type: 3}
+    - {fileID: 8300000, guid: 0dc85200620574bae84308def3645769, type: 3}
+    - {fileID: 8300000, guid: dda5b9a4f07054019aa6440334ecc002, type: 3}
     - {fileID: 8300000, guid: 77c07e9f191e50840ab40acde03bce76, type: 3}
   - name: CancelSFX
     sounds:
-    - {fileID: 8300000, guid: 97ab54d40e18a42debd05d60802370f4, type: 3}
+    - {fileID: 8300000, guid: 0f543b207b366461fbe70a680534914a, type: 3}
   - name: ConfirmSFX
     sounds:
-    - {fileID: 8300000, guid: c4ed649dba38448c0bd004bd6f74b286, type: 3}
+    - {fileID: 8300000, guid: 519f0ca20286b4b4eb5516b12fa74041, type: 3}
   audioSource: {fileID: 2022191879}
 --- !u!4 &2022191881
 Transform:

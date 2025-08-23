@@ -6697,8 +6697,8 @@ MonoBehaviour:
   mainMenuMusic: {fileID: 8300000, guid: 2410a26c422ff4b9fb0a086c573e9976, type: 3}
   levelMusic: {fileID: 8300000, guid: b554ab9f8876145c8bfb9ed0bcfc4578, type: 3}
   pauseMusic: {fileID: 8300000, guid: 2410a26c422ff4b9fb0a086c573e9976, type: 3}
-  winScreenMusic: {fileID: 8300000, guid: a53b1fe7b7eef415e96797a6d793ac09, type: 3}
-  loseScreenMusic: {fileID: 8300000, guid: 870c37bc33c334faca4a88ea0471c074, type: 3}
+  winScreenMusic: {fileID: 8300000, guid: 21bc590876d0d42b3aedbb15cf239c0d, type: 3}
+  loseScreenMusic: {fileID: 8300000, guid: 96f05f8cc1c204722a8233f42339d0db, type: 3}
   musicSource: {fileID: 0}
   soundList:
   - name: Test
@@ -6706,15 +6706,15 @@ MonoBehaviour:
     - {fileID: 0}
   - name: PerfectNote
     sounds:
-    - {fileID: 8300000, guid: 830ecb58df6924ba2a1cf00c6df2724c, type: 3}
+    - {fileID: 8300000, guid: 7925a8c72b1d4426d861d2d19f547386, type: 3}
   - name: HitNote
     sounds:
-    - {fileID: 8300000, guid: 680e71ec770ef47e2b06a2437c268ce6, type: 3}
+    - {fileID: 8300000, guid: 2357529ede5734df3a794b9ffef17f2a, type: 3}
   - name: MissNote
     sounds:
-    - {fileID: 8300000, guid: c93a6665e66e2482b9a92d6d6a3416e5, type: 3}
-    - {fileID: 8300000, guid: 7930c36ae443b48cdb788fb739fbd7d2, type: 3}
-    - {fileID: 8300000, guid: 9bbe13284e4734dffae49130f42ddcb6, type: 3}
+    - {fileID: 8300000, guid: aa91d899d42124c569ef55a3abb7505f, type: 3}
+    - {fileID: 8300000, guid: 0dc85200620574bae84308def3645769, type: 3}
+    - {fileID: 8300000, guid: dda5b9a4f07054019aa6440334ecc002, type: 3}
     - {fileID: 8300000, guid: 77c07e9f191e50840ab40acde03bce76, type: 3}
   - name: CancelSFX
     sounds: []
@@ -8195,8 +8195,8 @@ MonoBehaviour:
   scoreText: {fileID: 934499573}
   multiplierText: {fileID: 178196414}
   transitionTimes:
-  - 44.34
-  - 106.95
+  - 53.333
+  - 96
   gameEndTime: 130
   currentTransitionTime: 10
   transitionIndex: 0
@@ -16733,9 +16733,9 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: d706da24fbcdd43518043636466d20d7, type: 3}
+  m_audioClip: {fileID: 8300000, guid: dba7c183e565e4bba8afe13c6948f4f9, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.793
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -18477,7 +18477,7 @@ MonoBehaviour:
   - {fileID: 506773689}
   - {fileID: 1218673018}
   marginOfError: 0.2
-  bpm: 184
+  bpm: 135
   intervals:
   - steps: 1
     trigger:
