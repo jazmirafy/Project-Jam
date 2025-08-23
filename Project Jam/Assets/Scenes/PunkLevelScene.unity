@@ -6706,15 +6706,15 @@ MonoBehaviour:
     - {fileID: 0}
   - name: PerfectNote
     sounds:
-    - {fileID: 8300000, guid: 830ecb58df6924ba2a1cf00c6df2724c, type: 3}
+    - {fileID: 8300000, guid: 7925a8c72b1d4426d861d2d19f547386, type: 3}
   - name: HitNote
     sounds:
-    - {fileID: 8300000, guid: 680e71ec770ef47e2b06a2437c268ce6, type: 3}
+    - {fileID: 8300000, guid: 2357529ede5734df3a794b9ffef17f2a, type: 3}
   - name: MissNote
     sounds:
-    - {fileID: 8300000, guid: c93a6665e66e2482b9a92d6d6a3416e5, type: 3}
-    - {fileID: 8300000, guid: 7930c36ae443b48cdb788fb739fbd7d2, type: 3}
-    - {fileID: 8300000, guid: 9bbe13284e4734dffae49130f42ddcb6, type: 3}
+    - {fileID: 8300000, guid: aa91d899d42124c569ef55a3abb7505f, type: 3}
+    - {fileID: 8300000, guid: 0dc85200620574bae84308def3645769, type: 3}
+    - {fileID: 8300000, guid: dda5b9a4f07054019aa6440334ecc002, type: 3}
     - {fileID: 8300000, guid: 77c07e9f191e50840ab40acde03bce76, type: 3}
   - name: CancelSFX
     sounds: []
@@ -6850,7 +6850,7 @@ AudioSource:
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
-  Priority: 128
+  Priority: 163
   DopplerLevel: 1
   MinDistance: 1
   MaxDistance: 500
@@ -16735,7 +16735,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 033a47075935b4bf6ae8c8beaf9892e0, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.793
   m_Pitch: 1
   Loop: 0
   Mute: 0
