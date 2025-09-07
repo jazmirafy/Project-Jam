@@ -57,7 +57,7 @@ public class SongManager : MonoBehaviour
     {
         foreach (Intervals interval in intervals)
         {
-            //this is our time elapsed in terms of musical intervals (based on BPM)
+            //okay so this is our time elapsed in terms of musical intervals based on our bpm
             float sampledTime = audioSource.timeSamples / (audioSource.clip.frequency * interval.GetIntervalLength(bpm));
             interval.CheckForNewInterval(sampledTime);
         }
