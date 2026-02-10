@@ -57,7 +57,7 @@ public class SongManager : MonoBehaviour
     {
         foreach (Intervals interval in intervals)
         {
-            //time that we are elapsed divided by intervals
+            //okay so this is our time elapsed in terms of musical intervals based on our bpm
             float sampledTime = audioSource.timeSamples / (audioSource.clip.frequency * interval.GetIntervalLength(bpm));
             interval.CheckForNewInterval(sampledTime);
         }
@@ -118,10 +118,12 @@ public class SongManager : MonoBehaviour
 
 
 }
+ // okay so basically this class lets us define which musical beat to react to (like quarter notes, eighth notes, etc.)
+// this means that by adjusting the steps value we can control how often the event triggers based on the song's bpm
 [System.Serializable]
 public class Intervals
 {
-        public float steps;
+        public float steps; //how many beats per interval (this controls whether we have a quarter note or eighth note etc
         public UnityEvent trigger;
 
 
@@ -132,10 +134,10 @@ public class Intervals
         {
             return 60f / (bpm * steps);
         }
-        //check if we crossed into a new beat or not 
+        //this checks whether we've crossed into a new interval and fires the trigger if we have
         public void CheckForNewInterval(float interval)
         {
-            //round down to the nearest whole number and if we have a change in whole number we know we have another beat
+            
             if (Mathf.FloorToInt(interval) != lastInterval)
             {
                 lastInterval = Mathf.FloorToInt(interval);

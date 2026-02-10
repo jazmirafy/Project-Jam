@@ -73,7 +73,11 @@ public class GameManager : MonoBehaviour
             Debug.Log("Is the results screen active in hierarchy: " + resultsScreen.activeInHierarchy);
             Debug.Log("Is the game paused: " + UIManager.isPaused);
 
+                UIManager.gameplayEventSystem.SetActive(false);
+                UIManager.canPause = false;
                 resultsScreen.SetActive(true);
+                UIManager.resultsEventSystem.SetActive(true);
+                
                 normalText.text = normalHits.ToString();
                 goodText.text = goodHits.ToString();
                 perfectText.text = perfectHits.ToString();
